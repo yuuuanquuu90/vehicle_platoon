@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: VehiclePlatoon
+Bundle-SymbolicName: VehiclePlatoon;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.henshin.interpreter;bundle-version="0.9.0",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.5.0"

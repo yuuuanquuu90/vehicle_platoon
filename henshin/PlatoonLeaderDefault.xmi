@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<platoon:PlatooningSystem
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:platoon="http://www.example.org/platoon"
+    xsi:schemaLocation="http://www.example.org/platoon ../model/platoon.ecore">
+  <platoon length="4"
+      desiredGapSize="5">
+    <leader/>
+    <follower
+        id="1"
+        follows="//@platoon.0/@leader"
+        position="1"/>
+    <follower
+        id="2"
+        follows="1"
+        position="2"/>
+    <follower
+        id="3"
+        follows="2"
+        position="3"/>
+  </platoon>
+</platoon:PlatooningSystem>
