@@ -15,7 +15,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="PlatoonFollower" eSuperTypes="#//PlatoonVehicle">
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinCoord" eType="#//JoinPlatoonCoord"
         eOpposite="#//JoinPlatoonCoord/follower"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="marks" eType="#//JoiningPosition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="marks" eType="#//JoiningPosition"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PlatoonLeader" eSuperTypes="#//PlatoonVehicle">
     <eStructuralFeatures xsi:type="ecore:EReference" name="joiningRequest" eType="#//JoiningVehicle"

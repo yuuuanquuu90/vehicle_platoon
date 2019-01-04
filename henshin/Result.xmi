@@ -4,7 +4,9 @@
   <platoon length="4" desiredGapSize="5">
     <leader joiningRequest="5"/>
     <follower id="1" follows="//@platoon.0/@leader" position="1"/>
-    <follower id="2" follows="1" position="2"/>
+    <follower id="2" follows="1" position="2">
+      <marks/>
+    </follower>
     <follower id="3" follows="2" position="3"/>
   </platoon>
 </platoon:PlatooningSystem>
