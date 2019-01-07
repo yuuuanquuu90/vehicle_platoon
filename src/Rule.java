@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 import org.eclipse.emf.henshin.interpreter.EGraph;
 import org.eclipse.emf.henshin.interpreter.Engine;
 import org.eclipse.emf.henshin.interpreter.UnitApplication;
@@ -8,38 +6,24 @@ import org.eclipse.emf.henshin.model.Module;
 
 public class Rule {
 	private String name;
-	private Module module;
-	private EGraph graph;
-	private Engine engine;
+	private UnitApplication rule;
 
-	public Rule(String name, Module module, EGraph graph, Engine engine) {
+	public Rule(String name, Module module, Parameter... paras) {
 		this.name = name;
-		this.module = module;
-		this.graph = graph;
-		this.engine = engine;
-
-	}
-
-	void doRule(Parameter... paras) {
-		UnitApplication rule = new UnitApplicationImpl(engine);
-		rule.setEGraph(graph);
+		 rule = new UnitApplicationImpl(HenshinPlatoon.engine);
+		rule.setEGraph(HenshinPlatoon.graph);
 		rule.setUnit(module.getUnit(this.name));
-		setParameters(rule, paras);
-		throwException(rule);
+		setParameters(paras);
 	}
 
-	private void setParameters(UnitApplication rule, Parameter... paras) {
-		if (paras == null)
-			return;
+	private void setParameters(Parameter... paras) {
 		for (Parameter p : paras)
 			rule.setParameterValue(p.getName(), p.getValue());
-
 	}
 
-	private void throwException(UnitApplication rule) {
+	public void executeRule() {
 		if (!rule.execute(null))
 			throw new RuntimeException("Error: " + name + " is not executed.");
-
 	}
 }
 

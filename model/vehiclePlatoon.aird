@@ -3,6 +3,13 @@
   <viewpoint:DAnalysis xmi:id="_VrKlcA9BEemk45y7BcQzXA" selectedViews="_VtQQIA9BEemk45y7BcQzXA" version="13.0.0.201804031646">
     <semanticResources>platoon.ecore</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2003/XMLType</semanticResources>
+    <semanticResources>../henshin/ResultUntilComputGap.xmi</semanticResources>
+    <semanticResources>../henshin/ResultcreateJoiningCollaboration.xmi</semanticResources>
+    <semanticResources>../henshin/follower.henshin</semanticResources>
+    <semanticResources>../henshin/follower.henshin_diagram</semanticResources>
+    <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
+    <semanticResources>../henshin/joiningvehicle.henshin</semanticResources>
+    <semanticResources>../henshin/joiningvehicle.henshin_diagram</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_VtQQIA9BEemk45y7BcQzXA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_mwLlpw9BEemk45y7BcQzXA" name="platoon class diagram" repPath="#_mwEQ4A9BEemk45y7BcQzXA">
