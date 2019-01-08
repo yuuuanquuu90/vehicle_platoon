@@ -11,6 +11,9 @@ public class HenshinPlatoon {
 	public static final String RULE_RECEIVEREQUEST = "receiveRequest";
 	public static final String RULE_COMPUTEGAP = "computeGap";
 	public static final String RULE_CREATEJOININGCOLLABORATION = "createJoiningCollaboration";
+	public static final String RULE_FORMTEMPORALPLATOON = "formTemporalPlatoon";
+	public static final String RULE_SWITCHPLATOONANDLEADER1 = "switchPlatoonAndLeader1";
+	public static final String RULE_SWITCHPLATOONANDLEADER2 = "switchPlatoonAndLeader2";
 	public static final int MODULE_LEADER = 0;
 	public static final int MODULE_FOLLOWER = 1;
 	public static final int MODULE_JV = 2;
@@ -57,7 +60,9 @@ public class HenshinPlatoon {
 	}
 
 	private void doInjectFollowerRules() {
-
+		doInjectRules(RULE_FORMTEMPORALPLATOON, module[1]);
+		doInjectRules(RULE_SWITCHPLATOONANDLEADER1, module[1]);
+		doInjectRules(RULE_SWITCHPLATOONANDLEADER2, module[1]);
 	}
 
 	private void doInjectJVRules() {
