@@ -1,8 +1,7 @@
-import org.eclipse.emf.henshin.interpreter.EGraph;
-import org.eclipse.emf.henshin.interpreter.Engine;
 import org.eclipse.emf.henshin.interpreter.UnitApplication;
 import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl;
 import org.eclipse.emf.henshin.model.Module;
+import org.eclipse.emf.henshin.model.Unit;
 
 public class Rule {
 	private String name;
@@ -12,8 +11,12 @@ public class Rule {
 		this.name = name;
 		rule = new UnitApplicationImpl(HenshinPlatoon.engine);
 		rule.setEGraph(HenshinPlatoon.graph);
-		rule.setUnit(module.getUnit(this.name));
+		Unit unit = module.getUnit(name);
+		if (unit == null)
+			throwException(new NullPointerException("Rule: " + name + " is not defined.\n"));
+		rule.setUnit(unit);
 		setParameters(paras);
+
 	}
 
 	private void setParameters(Parameter... paras) {
@@ -24,7 +27,15 @@ public class Rule {
 	public void executeRule() {
 		System.out.println(Simulator.count++ + ". Execute Rule: " + this.name + "\n");
 		if (!rule.execute(null))
-			throw new RuntimeException("Error: " + name + " is not executed.");
+			throwException(new RuntimeException("Error: " + name + " is not executed.\n"));
+	}
+
+	private void throwException(Exception exc) {
+		try {
+			throw exc;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
 

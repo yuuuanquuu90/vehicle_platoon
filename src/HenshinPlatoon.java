@@ -14,6 +14,12 @@ public class HenshinPlatoon {
 	public static final String RULE_FORMTEMPORALPLATOON = "formTemporalPlatoon";
 	public static final String RULE_SWITCHPLATOONANDLEADER1 = "switchPlatoonAndLeader1";
 	public static final String RULE_SWITCHPLATOONANDLEADER2 = "switchPlatoonAndLeader2";
+	public static final String RULE_FORMGAP = "formGap";
+	public static final String RULE_MERGEGAP = "mergeGap";
+	public static final String RULE_CHANGELEADER = "changeLeader";
+	public static final String RULE_MOVETOINSERTIONPOSITION = "moveToInsertionPosition";
+	public static final String RULE_INSERTINGAP = "insertInGap";
+	public static final String RULE_BECOMESNEWFOLLOWER = "becomesNewFollower";
 	public static final int MODULE_LEADER = 0;
 	public static final int MODULE_FOLLOWER = 1;
 	public static final int MODULE_JV = 2;
@@ -53,7 +59,6 @@ public class HenshinPlatoon {
 	}
 
 	private void doInjectLeaderRules() {
-		// Inject Rules
 		doInjectRules(RULE_RECEIVEREQUEST, module[0]);
 		doInjectRules(RULE_COMPUTEGAP, module[0], new Parameter("y", 2));
 		doInjectRules(RULE_CREATEJOININGCOLLABORATION, module[0]);
@@ -63,10 +68,15 @@ public class HenshinPlatoon {
 		doInjectRules(RULE_FORMTEMPORALPLATOON, module[1]);
 		doInjectRules(RULE_SWITCHPLATOONANDLEADER1, module[1]);
 		doInjectRules(RULE_SWITCHPLATOONANDLEADER2, module[1]);
+		doInjectRules(RULE_FORMGAP, module[1]);
+		doInjectRules(RULE_MERGEGAP, module[1]);
+		doInjectRules(RULE_CHANGELEADER, module[1]);
 	}
 
 	private void doInjectJVRules() {
-
+		doInjectRules(RULE_MOVETOINSERTIONPOSITION, module[2]);
+		doInjectRules(RULE_INSERTINGAP, module[2]);
+		doInjectRules(RULE_BECOMESNEWFOLLOWER, module[2]);
 	}
 
 	private void doInjectRules(String name, Module module, Parameter... paras) {

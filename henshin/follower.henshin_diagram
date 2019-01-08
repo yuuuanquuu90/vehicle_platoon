@@ -180,7 +180,7 @@
   </children>
   <children xmi:type="notation:Shape" xmi:id="_HeeC4RKGEemXSdwWs8EEPg" type="2001" fontName="Segoe UI" italic="true" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_J_spgxKGEemXSdwWs8EEPg" source="defaultAction">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_J_sphBKGEemXSdwWs8EEPg" key="value" value="preserve*"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_J_sphBKGEemXSdwWs8EEPg" key="value" value="preserve"/>
     </eAnnotations>
     <children xmi:type="notation:DecorationNode" xmi:id="_Heep8BKGEemXSdwWs8EEPg" type="5001"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_Heep8RKGEemXSdwWs8EEPg" type="7001">

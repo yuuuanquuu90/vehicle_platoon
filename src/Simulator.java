@@ -1,5 +1,4 @@
 
-
 public class Simulator {
 	private static final String RESOURCEPATH = "henshin";
 	private static final String LEADER = "leader.henshin";
@@ -18,10 +17,9 @@ public class Simulator {
 		platoon.runRules(HenshinPlatoon.RULE_RECEIVEREQUEST);
 		platoon.runRules(HenshinPlatoon.RULE_COMPUTEGAP);
 		platoon.runRules(HenshinPlatoon.RULE_CREATEJOININGCOLLABORATION);
-		platoon.runRules(HenshinPlatoon.RULE_FORMTEMPORALPLATOON,true);
-		platoon.runRules(HenshinPlatoon.RULE_SWITCHPLATOONANDLEADER1,true);
+		platoon.runRules(HenshinPlatoon.RULE_FORMTEMPORALPLATOON, true);
+		platoon.runRules(HenshinPlatoon.RULE_SWITCHPLATOONANDLEADER1, true);
 		platoon.runRules(HenshinPlatoon.RULE_SWITCHPLATOONANDLEADER2, true);
-		
 
 	}
 }
