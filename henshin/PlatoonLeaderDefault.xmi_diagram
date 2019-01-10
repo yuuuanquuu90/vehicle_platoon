@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:platoon="http://www.example.org/platoon" xsi:schemaLocation="http://www.example.org/platoon ../model/platoon.ecore" xmi:id="_JtPWsA9IEemk45y7BcQzXA" type="Xml" measurementUnit="Pixel">
-  <styles xmi:type="notation:DiagramStyle" xmi:id="_JtPWsQ9IEemk45y7BcQzXA"/>
-  <element xmi:type="platoon:PlatooningSystem" href="PlatoonLeaderDefault.xmi#/"/>
-</notation:Diagram>

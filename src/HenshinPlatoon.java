@@ -12,7 +12,7 @@ public class HenshinPlatoon {
 	public static final String RULE_COMPUTEGAP = "computeGap";
 	public static final String RULE_CREATEJOININGCOLLABORATION = "createJoiningCollaboration";
 	public static final String RULE_FORMTEMPORALPLATOON = "formTemporalPlatoon";
-	public static final String RULE_SWITCHPLATOONANDLEADER1 = "switchPlatoonAndLeader1";
+	public static final String RULE_SWITCHPLATOONANDLEADER = "switchPlatoonAndLeader";
 	public static final String RULE_SWITCHPLATOONANDLEADER2 = "switchPlatoonAndLeader2";
 	public static final String RULE_FORMGAP = "formGap";
 	public static final String RULE_MERGEGAP = "mergeGap";
@@ -20,6 +20,8 @@ public class HenshinPlatoon {
 	public static final String RULE_MOVETOINSERTIONPOSITION = "moveToInsertionPosition";
 	public static final String RULE_INSERTINGAP = "insertInGap";
 	public static final String RULE_BECOMESNEWFOLLOWER = "becomesNewFollower";
+	public static final String RULE_ADDFOLLOWER = "addFollower";
+	public static final String RULE_CREATELEADER = "createLeader";
 	public static final int MODULE_LEADER = 0;
 	public static final int MODULE_FOLLOWER = 1;
 	public static final int MODULE_JV = 2;
@@ -62,20 +64,21 @@ public class HenshinPlatoon {
 		doInjectRules(RULE_RECEIVEREQUEST, module[0]);
 		doInjectRules(RULE_COMPUTEGAP, module[0], new Parameter("y", 2));
 		doInjectRules(RULE_CREATEJOININGCOLLABORATION, module[0]);
+		doInjectRules(RULE_ADDFOLLOWER, module[0]);
+		doInjectRules(RULE_CREATELEADER, module[0]);
 	}
 
 	private void doInjectFollowerRules() {
 		doInjectRules(RULE_FORMTEMPORALPLATOON, module[1]);
-		doInjectRules(RULE_SWITCHPLATOONANDLEADER1, module[1]);
-		doInjectRules(RULE_SWITCHPLATOONANDLEADER2, module[1]);
-		doInjectRules(RULE_FORMGAP, module[1]);
+		doInjectRules(RULE_SWITCHPLATOONANDLEADER, module[1]);
+		doInjectRules(RULE_FORMGAP, module[1], new Parameter("x", 10));
 		doInjectRules(RULE_MERGEGAP, module[1]);
 		doInjectRules(RULE_CHANGELEADER, module[1]);
 	}
 
 	private void doInjectJVRules() {
 		doInjectRules(RULE_MOVETOINSERTIONPOSITION, module[2]);
-		doInjectRules(RULE_INSERTINGAP, module[2]);
+		doInjectRules(RULE_INSERTINGAP, module[2],new Parameter("lengthOfVehicle", 3));
 		doInjectRules(RULE_BECOMESNEWFOLLOWER, module[2]);
 	}
 
@@ -83,13 +86,23 @@ public class HenshinPlatoon {
 		rules.put(name, new Rule(name, module, paras));
 	}
 
-	public void runRules(String ruleName, boolean saveFile) {
-		runRules(ruleName);
-		resourceSet.saveEObject(graph.getRoots().get(0), "Result_" + ruleName + ".xmi");
+	public boolean runRules(String ruleName, boolean saveFile) {
+		boolean out = runRules(ruleName);
+		saveFilebyRuleName(ruleName);
+		return out;
 	}
 
-	public void runRules(String ruleName) {
-		rules.get(ruleName).executeRule();
+	public boolean runRules(String ruleName) {
+		return rules.get(ruleName).executeRule();
+	}
+
+	public void saveFilebyRuleName(String ruleName) {
+		int count = Simulator.count - 1;
+		resourceSet.saveEObject(graph.getRoots().get(0), "Result_" + count + " " + ruleName + ".xmi");
+	}
+
+	public void saveFilebyFileName(String FileName) {
+		resourceSet.saveEObject(graph.getRoots().get(0), FileName);
 	}
 
 }

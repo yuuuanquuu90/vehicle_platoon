@@ -13,7 +13,7 @@ public class Rule {
 		rule.setEGraph(HenshinPlatoon.graph);
 		Unit unit = module.getUnit(name);
 		if (unit == null)
-			throwException(new NullPointerException("Rule: " + name + " is not defined.\n"));
+			System.out.println("Rule: " + name + " is not defined.");
 		rule.setUnit(unit);
 		setParameters(paras);
 
@@ -24,19 +24,17 @@ public class Rule {
 			rule.setParameterValue(p.getName(), p.getValue());
 	}
 
-	public void executeRule() {
-		System.out.println(Simulator.count++ + ". Execute Rule: " + this.name + "\n");
-		if (!rule.execute(null))
-			throwException(new RuntimeException("Error: " + name + " is not executed.\n"));
-	}
-
-	private void throwException(Exception exc) {
-		try {
-			throw exc;
-		} catch (Exception e) {
-			e.printStackTrace();
+	public boolean executeRule() {
+		System.out.print(Simulator.count++ + ". Execute Rule: " + this.name);
+		if (!rule.execute(null)) {
+			System.out.print("   -> Warning: Step " + (int) (Simulator.count - 1) + " " + name + " is not executed.\n");
+			return false;
+		} else {
+			System.out.println();
+			return true;
 		}
 	}
+
 }
 
 class Parameter {

@@ -3,25 +3,22 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="platoon" nsURI="http://www.example.org/platoon" nsPrefix="platoon">
   <eClassifiers xsi:type="ecore:EClass" name="Platoon">
     <eStructuralFeatures xsi:type="ecore:EReference" name="leader" lowerBound="1"
-        eType="#//PlatoonLeader" containment="true"/>
+        eType="#//PlatoonVehicle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="follower" lowerBound="1"
-        upperBound="-1" eType="#//PlatoonFollower" containment="true"/>
+        upperBound="-1" eType="#//PlatoonVehicle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="follows" eType="#//Platoon"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinplatoonCord" eType="#//JoinPlatoonCoord"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="desiredGapSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PlatoonFollower" eSuperTypes="#//PlatoonVehicle"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PlatoonLeader" eSuperTypes="#//PlatoonVehicle">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joiningRequest" eType="#//JoiningVehicle"
-        eOpposite="#//JoiningVehicle/wantsToJoin"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="isAwareOf" eType="#//PlatoonFollower"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" lowerBound="2"
+        upperBound="-1" eType="#//PlatoonVehicle" eOpposite="#//PlatoonVehicle/platoon"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Vehicle" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="follows" eType="#//Vehicle"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="isAwareOf" eType="#//Vehicle"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JoinPlatoonCoord">
     <eStructuralFeatures xsi:type="ecore:EReference" name="joiningvehicle" lowerBound="1"
@@ -31,8 +28,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JoiningVehicle" eSuperTypes="#//Vehicle">
     <eStructuralFeatures xsi:type="ecore:EReference" name="insertsIn" eType="#//FrontGap"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="wantsToJoin" eType="#//PlatoonLeader"
-        eOpposite="#//PlatoonLeader/joiningRequest"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wantsToJoin" eType="#//PlatoonVehicle"
+        eOpposite="#//PlatoonVehicle/joiningRequest"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinCoord" eType="#//JoinPlatoonCoord"
         eOpposite="#//JoinPlatoonCoord/joiningvehicle"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="locatedIn" eType="#//JoiningPosition"/>
@@ -44,10 +41,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="forms" eType="#//FrontGap"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="marks" eType="#//JoiningPosition"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinCoord" eType="#//JoinPlatoonCoord"
         eOpposite="#//JoinPlatoonCoord/platoonvehicle"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="marks" eType="#//JoiningPosition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joiningRequest" eType="#//JoiningVehicle"
+        eOpposite="#//JoiningVehicle/wantsToJoin"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platoon" eType="#//Platoon"
+        eOpposite="#//Platoon/members"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PlatooningSystem">
     <eStructuralFeatures xsi:type="ecore:EReference" name="vehicles" upperBound="-1"
