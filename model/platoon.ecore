@@ -19,19 +19,20 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="follows" eType="#//Vehicle"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="isAwareOf" eType="#//Vehicle"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joinCord" eType="#//JoinPlatoonCoord"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JoinPlatoonCoord">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joiningvehicle" lowerBound="1"
-        eType="#//JoiningVehicle" eOpposite="#//JoiningVehicle/joinCoord"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="platoonvehicle" lowerBound="2"
-        upperBound="2" eType="#//PlatoonVehicle" eOpposite="#//PlatoonVehicle/joinCoord"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cordManager" lowerBound="1"
+        eType="#//Vehicle"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gapMaker" lowerBound="1"
+        eType="#//Vehicle"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joiningVehicle" lowerBound="1"
+        eType="#//Vehicle"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JoiningVehicle" eSuperTypes="#//Vehicle">
     <eStructuralFeatures xsi:type="ecore:EReference" name="insertsIn" eType="#//FrontGap"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="wantsToJoin" eType="#//PlatoonVehicle"
         eOpposite="#//PlatoonVehicle/joiningRequest"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joinCoord" eType="#//JoinPlatoonCoord"
-        eOpposite="#//JoinPlatoonCoord/joiningvehicle"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="locatedIn" eType="#//JoiningPosition"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FrontGap">
@@ -41,8 +42,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="forms" eType="#//FrontGap"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joinCoord" eType="#//JoinPlatoonCoord"
-        eOpposite="#//JoinPlatoonCoord/platoonvehicle"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="marks" eType="#//JoiningPosition"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joiningRequest" eType="#//JoiningVehicle"

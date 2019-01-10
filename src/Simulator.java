@@ -1,3 +1,4 @@
+import java.io.File;
 
 public class Simulator {
 	private static final String RESOURCEPATH = "henshin";
@@ -5,31 +6,40 @@ public class Simulator {
 	private static final String FOLLOWER = "follower.henshin";
 	private static final String JONINGVEHICLE = "joiningvehicle.henshin";
 	private static final String DIAGRAM_PATH = "PlatooningSystem.xmi";
-	private static final String INITDIAGRAMM = "PlatooningSystem.xmi";
-	private static final String PLATOONDIAGRAMM = "PlatoonLeaderDefault.xmi";
 	public static int count;
 
 	public static void main(String[] args) throws InterruptedException {
+		// Check Existence of the Instance Diagram
+		if (!new File(RESOURCEPATH + "/" + DIAGRAM_PATH).exists())
+			throw new RuntimeException("Instance Digram: " + DIAGRAM_PATH
+					+ " can not be found. Please create it before excute the simulator.");
+
+		// Create Henshin Diagram Instance
 		HenshinPlatoon platoon = new HenshinPlatoon(RESOURCEPATH, DIAGRAM_PATH, LEADER, FOLLOWER, JONINGVEHICLE);
-		count = 0;
 
 		// Initiate platoon WARNING: this method will overwrite the original diagram.
-//		initPlatoon(platoon,5);
+		initPlatoon(platoon);
 
 		// Start Simulation
 		simu_JoiningManeuver(platoon);
 	}
 
-	private static void initPlatoon(HenshinPlatoon platoon, int count) {
+	private static void initPlatoon(HenshinPlatoon platoon) {
+		System.out.println("\n*****************************************");
+		System.out.println("Initialize the platoon.");
+		System.out.println("*****************************************\n");
+		count = 0;
 		platoon.runRules(HenshinPlatoon.RULE_CREATELEADER);
-		for (int i = 0; i < count; i++)
-			platoon.runRules(HenshinPlatoon.RULE_ADDFOLLOWER);
+		while (platoon.runRules(HenshinPlatoon.RULE_ADDFOLLOWER))
+			;
 		platoon.saveFilebyFileName(DIAGRAM_PATH);
 	}
 
 	public static void simu_JoiningManeuver(HenshinPlatoon platoon) {
-		System.out.println("\nStart the Simulation of Joining Maneuver.\n");
-
+		System.out.println("\n*****************************************");
+		System.out.println("Start the Simulation of Joining Maneuver.");
+		System.out.println("*****************************************\n");
+		count = 0;
 		// A platoon accepts simultaneously only one JV. The 2. Rule was rejected.
 		platoon.runRules(HenshinPlatoon.RULE_RECEIVEREQUEST, true);
 		platoon.runRules(HenshinPlatoon.RULE_RECEIVEREQUEST, true);
@@ -48,11 +58,8 @@ public class Simulator {
 		platoon.runRules(HenshinPlatoon.RULE_FORMTEMPORALPLATOON, true);
 
 		// All Followers after F2 (the temporary leader) have switched their platoon and
-		// see F2
-		// as the new leader.
-		while (platoon.runRules(HenshinPlatoon.RULE_SWITCHPLATOONANDLEADER))
-			;
-		platoon.saveFilebyRuleName(HenshinPlatoon.RULE_SWITCHPLATOONANDLEADER);
+		// see F2 as the new leader.
+		platoon.runRules(HenshinPlatoon.RULE_SWITCHPLATOONANDLEADERLOOP);
 
 		// F2 has formed the Gap.
 		platoon.runRules(HenshinPlatoon.RULE_FORMGAP, true);
@@ -63,6 +70,16 @@ public class Simulator {
 
 		// JV has became a new Follower in platoon.
 		platoon.runRules(HenshinPlatoon.RULE_BECOMESNEWFOLLOWER, true);
+
+		// Leader communicates now with F2
+		// F2 has merges its gap.
+		platoon.runRules(HenshinPlatoon.RULE_MERGEGAP, true);
+
+		// F2 has switched from a temporary leader to a normal follower again.
+		platoon.runRules(HenshinPlatoon.RULE_MERGEPLATOON, true);
+
+		// The Joining-Collaboration has removed.
+		platoon.runRules(HenshinPlatoon.RULE_REMOVEJOININGCOLLABORATION, true);
 
 	}
 }

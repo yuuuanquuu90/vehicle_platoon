@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 import org.eclipse.emf.henshin.interpreter.EGraph;
@@ -12,16 +13,18 @@ public class HenshinPlatoon {
 	public static final String RULE_COMPUTEGAP = "computeGap";
 	public static final String RULE_CREATEJOININGCOLLABORATION = "createJoiningCollaboration";
 	public static final String RULE_FORMTEMPORALPLATOON = "formTemporalPlatoon";
-	public static final String RULE_SWITCHPLATOONANDLEADER = "switchPlatoonAndLeader";
-	public static final String RULE_SWITCHPLATOONANDLEADER2 = "switchPlatoonAndLeader2";
+	public static final String RULE_SWITCHPLATOONANDLEADERLOOP = "switchPlatoonAndLeaderLoop";
 	public static final String RULE_FORMGAP = "formGap";
 	public static final String RULE_MERGEGAP = "mergeGap";
-	public static final String RULE_CHANGELEADER = "changeLeader";
+	public static final String RULE_DISABLELEADERFLAG = "disableLeaderFlag";
+	public static final String RULE_SETPLATOONBACK = "setPlatoonback";
+	public static final String RULE_MERGEPLATOON = "mergePlatoon";
 	public static final String RULE_MOVETOINSERTIONPOSITION = "moveToInsertionPosition";
 	public static final String RULE_INSERTINGAP = "insertInGap";
 	public static final String RULE_BECOMESNEWFOLLOWER = "becomesNewFollower";
 	public static final String RULE_ADDFOLLOWER = "addFollower";
 	public static final String RULE_CREATELEADER = "createLeader";
+	public static final String RULE_REMOVEJOININGCOLLABORATION = "removeJoiningCollaboration";
 	public static final int MODULE_LEADER = 0;
 	public static final int MODULE_FOLLOWER = 1;
 	public static final int MODULE_JV = 2;
@@ -62,23 +65,25 @@ public class HenshinPlatoon {
 
 	private void doInjectLeaderRules() {
 		doInjectRules(RULE_RECEIVEREQUEST, module[0]);
-		doInjectRules(RULE_COMPUTEGAP, module[0], new Parameter("y", 2));
+		doInjectRules(RULE_COMPUTEGAP, module[0]);
 		doInjectRules(RULE_CREATEJOININGCOLLABORATION, module[0]);
 		doInjectRules(RULE_ADDFOLLOWER, module[0]);
 		doInjectRules(RULE_CREATELEADER, module[0]);
+		doInjectRules(RULE_REMOVEJOININGCOLLABORATION, module[0]);
 	}
 
 	private void doInjectFollowerRules() {
 		doInjectRules(RULE_FORMTEMPORALPLATOON, module[1]);
-		doInjectRules(RULE_SWITCHPLATOONANDLEADER, module[1]);
+		doInjectRules(RULE_SWITCHPLATOONANDLEADERLOOP, module[1]);
 		doInjectRules(RULE_FORMGAP, module[1], new Parameter("x", 10));
 		doInjectRules(RULE_MERGEGAP, module[1]);
-		doInjectRules(RULE_CHANGELEADER, module[1]);
+		doInjectRules(RULE_DISABLELEADERFLAG, module[1]);
+		doInjectRules(RULE_MERGEPLATOON, module[1]);
 	}
 
 	private void doInjectJVRules() {
 		doInjectRules(RULE_MOVETOINSERTIONPOSITION, module[2]);
-		doInjectRules(RULE_INSERTINGAP, module[2],new Parameter("lengthOfVehicle", 3));
+		doInjectRules(RULE_INSERTINGAP, module[2], new Parameter("lengthOfVehicle", 3));
 		doInjectRules(RULE_BECOMESNEWFOLLOWER, module[2]);
 	}
 
@@ -98,7 +103,8 @@ public class HenshinPlatoon {
 
 	public void saveFilebyRuleName(String ruleName) {
 		int count = Simulator.count - 1;
-		resourceSet.saveEObject(graph.getRoots().get(0), "Result_" + count + " " + ruleName + ".xmi");
+		DecimalFormat df = new DecimalFormat("00");
+		resourceSet.saveEObject(graph.getRoots().get(0), "Result_" + df.format(count) + "_" + ruleName + ".xmi");
 	}
 
 	public void saveFilebyFileName(String FileName) {

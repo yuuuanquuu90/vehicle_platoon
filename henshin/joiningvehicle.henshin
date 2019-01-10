@@ -3,84 +3,71 @@
   <imports href="../model/platoon.ecore#/"/>
   <units xsi:type="henshin:Rule" xmi:id="_uYNZ4BQWEemf69h7uCbdZw" name="moveToInsertionPosition">
     <lhs xmi:id="_uYNZ5RQWEemf69h7uCbdZw" name="Lhs">
-      <nodes xmi:id="_zJ0HsBQWEemf69h7uCbdZw" outgoing="_3o0poBQWEemf69h7uCbdZw _4ZiU4BQWEemf69h7uCbdZw">
+      <nodes xmi:id="_zJ0HsBQWEemf69h7uCbdZw" outgoing="_4ZiU4BQWEemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//Platoon"/>
       </nodes>
-      <nodes xmi:id="_z7dAABQWEemf69h7uCbdZw" incoming="_3o0poBQWEemf69h7uCbdZw _9gQXEBQWEemf69h7uCbdZw">
+      <nodes xmi:id="_z_nuUBQWEemf69h7uCbdZw" incoming="_4ZiU4BQWEemf69h7uCbdZw _VfMjwBTYEemgv7xuEKHfSA" outgoing="_aYhqMBTYEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
       </nodes>
-      <nodes xmi:id="_z_nuUBQWEemf69h7uCbdZw" incoming="_4ZiU4BQWEemf69h7uCbdZw _-axekBQWEemf69h7uCbdZw">
-        <type href="../model/platoon.ecore#//PlatoonVehicle"/>
-      </nodes>
-      <nodes xmi:id="_0mEDQBQWEemf69h7uCbdZw" incoming="_-2Ik4BQWEemf69h7uCbdZw">
+      <nodes xmi:id="_0mEDQBQWEemf69h7uCbdZw" incoming="_Vz8rwBTYEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//JoiningVehicle"/>
       </nodes>
-      <nodes xmi:id="_01tBwBQWEemf69h7uCbdZw">
+      <nodes xmi:id="_01tBwBQWEemf69h7uCbdZw" incoming="_aYhqMBTYEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//JoiningPosition"/>
       </nodes>
-      <nodes xmi:id="_8eoiABQWEemf69h7uCbdZw" outgoing="_9gQXEBQWEemf69h7uCbdZw _-axekBQWEemf69h7uCbdZw _-2Ik4BQWEemf69h7uCbdZw">
+      <nodes xmi:id="_T_mZQBTYEemgv7xuEKHfSA" outgoing="_VfMjwBTYEemgv7xuEKHfSA _Vz8rwBTYEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//JoinPlatoonCoord"/>
       </nodes>
-      <edges xmi:id="_3o0poBQWEemf69h7uCbdZw" source="_zJ0HsBQWEemf69h7uCbdZw" target="_z7dAABQWEemf69h7uCbdZw">
-        <type href="../model/platoon.ecore#//Platoon/leader"/>
-      </edges>
       <edges xmi:id="_4ZiU4BQWEemf69h7uCbdZw" source="_zJ0HsBQWEemf69h7uCbdZw" target="_z_nuUBQWEemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//Platoon/follower"/>
       </edges>
-      <edges xmi:id="_9gQXEBQWEemf69h7uCbdZw" source="_8eoiABQWEemf69h7uCbdZw" target="_z7dAABQWEemf69h7uCbdZw">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord/platoonvehicle"/>
+      <edges xmi:id="_VfMjwBTYEemgv7xuEKHfSA" source="_T_mZQBTYEemgv7xuEKHfSA" target="_z_nuUBQWEemf69h7uCbdZw">
+        <type href="../model/platoon.ecore#//JoinPlatoonCoord/gapMaker"/>
       </edges>
-      <edges xmi:id="_-axekBQWEemf69h7uCbdZw" source="_8eoiABQWEemf69h7uCbdZw" target="_z_nuUBQWEemf69h7uCbdZw">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord/platoonvehicle"/>
+      <edges xmi:id="_Vz8rwBTYEemgv7xuEKHfSA" source="_T_mZQBTYEemgv7xuEKHfSA" target="_0mEDQBQWEemf69h7uCbdZw">
+        <type href="../model/platoon.ecore#//JoinPlatoonCoord/joiningVehicle"/>
       </edges>
-      <edges xmi:id="_-2Ik4BQWEemf69h7uCbdZw" source="_8eoiABQWEemf69h7uCbdZw" target="_0mEDQBQWEemf69h7uCbdZw">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord/joiningvehicle"/>
+      <edges xmi:id="_aYhqMBTYEemgv7xuEKHfSA" source="_z_nuUBQWEemf69h7uCbdZw" target="_01tBwBQWEemf69h7uCbdZw">
+        <type href="../model/platoon.ecore#//PlatoonVehicle/marks"/>
       </edges>
     </lhs>
     <rhs xmi:id="_uYNZ5hQWEemf69h7uCbdZw" name="Rhs">
-      <nodes xmi:id="_zJ0HsRQWEemf69h7uCbdZw" outgoing="_3o0poRQWEemf69h7uCbdZw _4ZiU4RQWEemf69h7uCbdZw">
+      <nodes xmi:id="_zJ0HsRQWEemf69h7uCbdZw" outgoing="_4ZiU4RQWEemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//Platoon"/>
       </nodes>
-      <nodes xmi:id="_z7dAARQWEemf69h7uCbdZw" incoming="_3o0poRQWEemf69h7uCbdZw _9gQ-IBQWEemf69h7uCbdZw">
+      <nodes xmi:id="_z_nuURQWEemf69h7uCbdZw" incoming="_4ZiU4RQWEemf69h7uCbdZw _VfMjwRTYEemgv7xuEKHfSA" outgoing="_aYhqMRTYEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
       </nodes>
-      <nodes xmi:id="_z_nuURQWEemf69h7uCbdZw" incoming="_4ZiU4RQWEemf69h7uCbdZw _-axekRQWEemf69h7uCbdZw">
-        <type href="../model/platoon.ecore#//PlatoonVehicle"/>
-      </nodes>
-      <nodes xmi:id="_0mEDQRQWEemf69h7uCbdZw" incoming="_-2Ik4RQWEemf69h7uCbdZw" outgoing="_7Kk5IBQWEemf69h7uCbdZw">
+      <nodes xmi:id="_0mEDQRQWEemf69h7uCbdZw" incoming="_Vz8rwRTYEemgv7xuEKHfSA" outgoing="_7Kk5IBQWEemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//JoiningVehicle"/>
       </nodes>
-      <nodes xmi:id="_01tBwRQWEemf69h7uCbdZw" incoming="_7Kk5IBQWEemf69h7uCbdZw">
+      <nodes xmi:id="_01tBwRQWEemf69h7uCbdZw" incoming="_7Kk5IBQWEemf69h7uCbdZw _aYhqMRTYEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//JoiningPosition"/>
       </nodes>
-      <nodes xmi:id="_8eoiARQWEemf69h7uCbdZw" outgoing="_9gQ-IBQWEemf69h7uCbdZw _-axekRQWEemf69h7uCbdZw _-2Ik4RQWEemf69h7uCbdZw">
+      <nodes xmi:id="_T_mZQRTYEemgv7xuEKHfSA" outgoing="_VfMjwRTYEemgv7xuEKHfSA _Vz8rwRTYEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//JoinPlatoonCoord"/>
       </nodes>
-      <edges xmi:id="_3o0poRQWEemf69h7uCbdZw" source="_zJ0HsRQWEemf69h7uCbdZw" target="_z7dAARQWEemf69h7uCbdZw">
-        <type href="../model/platoon.ecore#//Platoon/leader"/>
-      </edges>
       <edges xmi:id="_4ZiU4RQWEemf69h7uCbdZw" source="_zJ0HsRQWEemf69h7uCbdZw" target="_z_nuURQWEemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//Platoon/follower"/>
-      </edges>
-      <edges xmi:id="_9gQ-IBQWEemf69h7uCbdZw" source="_8eoiARQWEemf69h7uCbdZw" target="_z7dAARQWEemf69h7uCbdZw">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord/platoonvehicle"/>
-      </edges>
-      <edges xmi:id="_-axekRQWEemf69h7uCbdZw" source="_8eoiARQWEemf69h7uCbdZw" target="_z_nuURQWEemf69h7uCbdZw">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord/platoonvehicle"/>
-      </edges>
-      <edges xmi:id="_-2Ik4RQWEemf69h7uCbdZw" source="_8eoiARQWEemf69h7uCbdZw" target="_0mEDQRQWEemf69h7uCbdZw">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord/joiningvehicle"/>
       </edges>
       <edges xmi:id="_7Kk5IBQWEemf69h7uCbdZw" source="_0mEDQRQWEemf69h7uCbdZw" target="_01tBwRQWEemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//JoiningVehicle/locatedIn"/>
       </edges>
+      <edges xmi:id="_VfMjwRTYEemgv7xuEKHfSA" source="_T_mZQRTYEemgv7xuEKHfSA" target="_z_nuURQWEemf69h7uCbdZw">
+        <type href="../model/platoon.ecore#//JoinPlatoonCoord/gapMaker"/>
+      </edges>
+      <edges xmi:id="_Vz8rwRTYEemgv7xuEKHfSA" source="_T_mZQRTYEemgv7xuEKHfSA" target="_0mEDQRQWEemf69h7uCbdZw">
+        <type href="../model/platoon.ecore#//JoinPlatoonCoord/joiningVehicle"/>
+      </edges>
+      <edges xmi:id="_aYhqMRTYEemgv7xuEKHfSA" source="_z_nuURQWEemf69h7uCbdZw" target="_01tBwRQWEemf69h7uCbdZw">
+        <type href="../model/platoon.ecore#//PlatoonVehicle/marks"/>
+      </edges>
     </rhs>
     <mappings xmi:id="_zJ0HshQWEemf69h7uCbdZw" origin="_zJ0HsBQWEemf69h7uCbdZw" image="_zJ0HsRQWEemf69h7uCbdZw"/>
-    <mappings xmi:id="_z7dAAhQWEemf69h7uCbdZw" origin="_z7dAABQWEemf69h7uCbdZw" image="_z7dAARQWEemf69h7uCbdZw"/>
     <mappings xmi:id="_z_nuUhQWEemf69h7uCbdZw" origin="_z_nuUBQWEemf69h7uCbdZw" image="_z_nuURQWEemf69h7uCbdZw"/>
     <mappings xmi:id="_0mEDQhQWEemf69h7uCbdZw" origin="_0mEDQBQWEemf69h7uCbdZw" image="_0mEDQRQWEemf69h7uCbdZw"/>
     <mappings xmi:id="_01tBwhQWEemf69h7uCbdZw" origin="_01tBwBQWEemf69h7uCbdZw" image="_01tBwRQWEemf69h7uCbdZw"/>
-    <mappings xmi:id="_8eoiAhQWEemf69h7uCbdZw" origin="_8eoiABQWEemf69h7uCbdZw" image="_8eoiARQWEemf69h7uCbdZw"/>
+    <mappings xmi:id="_T_mZQhTYEemgv7xuEKHfSA" origin="_T_mZQBTYEemgv7xuEKHfSA" image="_T_mZQRTYEemgv7xuEKHfSA"/>
   </units>
   <units xsi:type="henshin:Rule" xmi:id="_lLOd8BS7Eemgv7xuEKHfSA" name="insertInGap">
     <parameters xmi:id="_kZleQBS-Eemgv7xuEKHfSA" name="lengthOfVehicle" kind="IN">
@@ -178,7 +165,7 @@
     <mappings xmi:id="_yokXYhS8Eemgv7xuEKHfSA" origin="_yokXYBS8Eemgv7xuEKHfSA" image="_yokXYRS8Eemgv7xuEKHfSA"/>
     <mappings xmi:id="_4Op2IhS8Eemgv7xuEKHfSA" origin="_4Op2IBS8Eemgv7xuEKHfSA" image="_4Op2IRS8Eemgv7xuEKHfSA"/>
   </units>
-  <units xsi:type="henshin:Rule" xmi:id="_W8yakBTBEemgv7xuEKHfSA" name="becomesNewFollower">
+  <units xsi:type="henshin:Rule" xmi:id="_W8yakBTBEemgv7xuEKHfSA" name="becomesNewFollower" checkDangling="false">
     <parameters xmi:id="_2TilkBTCEemgv7xuEKHfSA" name="x" kind="VAR">
       <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </parameters>
@@ -186,32 +173,35 @@
       <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </parameters>
     <lhs xmi:id="_W8020BTBEemgv7xuEKHfSA" name="Lhs">
-      <nodes xmi:id="_bOeSMBTBEemgv7xuEKHfSA" incoming="_cZR4cBTBEemgv7xuEKHfSA" outgoing="_1ZChoBTBEemgv7xuEKHfSA">
+      <nodes xmi:id="_bOeSMBTBEemgv7xuEKHfSA" incoming="_cZR4cBTBEemgv7xuEKHfSA _tKnjUBTwEemgv7xuEKHfSA" outgoing="_1ZChoBTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//Platoon"/>
         <attributes xmi:id="_m6DTEBTCEemgv7xuEKHfSA" value="x">
           <type href="../model/platoon.ecore#//Platoon/length"/>
         </attributes>
       </nodes>
-      <nodes xmi:id="_bRctsBTBEemgv7xuEKHfSA" outgoing="_cZR4cBTBEemgv7xuEKHfSA _gsbIoBTBEemgv7xuEKHfSA">
+      <nodes xmi:id="_bRctsBTBEemgv7xuEKHfSA" incoming="_tYQ9wBTwEemgv7xuEKHfSA" outgoing="_cZR4cBTBEemgv7xuEKHfSA _gsbIoBTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//Platoon"/>
       </nodes>
-      <nodes xmi:id="_fnWW8BTBEemgv7xuEKHfSA" incoming="_gsbIoBTBEemgv7xuEKHfSA __CDDQBTBEemgv7xuEKHfSA" outgoing="_kP-H4BTBEemgv7xuEKHfSA">
+      <nodes xmi:id="_fnWW8BTBEemgv7xuEKHfSA" incoming="_gsbIoBTBEemgv7xuEKHfSA" outgoing="_kP-H4BTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
       </nodes>
-      <nodes xmi:id="_jWhXYBTBEemgv7xuEKHfSA" incoming="_kP-H4BTBEemgv7xuEKHfSA _njNaQBTBEemgv7xuEKHfSA">
+      <nodes xmi:id="_jWhXYBTBEemgv7xuEKHfSA" incoming="_kP-H4BTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//FrontGap"/>
       </nodes>
-      <nodes xmi:id="_tzAkYBTBEemgv7xuEKHfSA" incoming="_1ZChoBTBEemgv7xuEKHfSA _vauJEBTBEemgv7xuEKHfSA">
+      <nodes xmi:id="_tzAkYBTBEemgv7xuEKHfSA" incoming="_1ZChoBTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
       </nodes>
-      <nodes xmi:id="_6tYwIBTBEemgv7xuEKHfSA" outgoing="__CDDQBTBEemgv7xuEKHfSA _9wriABTBEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord"/>
-      </nodes>
-      <nodes xmi:id="_mMdpwBTBEemgv7xuEKHfSA" incoming="_9wriABTBEemgv7xuEKHfSA" outgoing="_njNaQBTBEemgv7xuEKHfSA _vauJEBTBEemgv7xuEKHfSA">
+      <nodes xmi:id="_mMdpwBTBEemgv7xuEKHfSA" incoming="_tlIVEBTwEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//JoiningVehicle"/>
         <attributes xmi:id="_pn-48BTCEemgv7xuEKHfSA" value="y">
           <type href="../model/platoon.ecore#//Vehicle/id"/>
         </attributes>
+      </nodes>
+      <nodes xmi:id="_qGibMBTYEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//JoinPlatoonCoord"/>
+      </nodes>
+      <nodes xmi:id="_sTfHABTwEemgv7xuEKHfSA" outgoing="_tKnjUBTwEemgv7xuEKHfSA _tYQ9wBTwEemgv7xuEKHfSA _tlIVEBTwEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//PlatooningSystem"/>
       </nodes>
       <edges xmi:id="_cZR4cBTBEemgv7xuEKHfSA" source="_bRctsBTBEemgv7xuEKHfSA" target="_bOeSMBTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//Platoon/follows"/>
@@ -225,42 +215,36 @@
       <edges xmi:id="_1ZChoBTBEemgv7xuEKHfSA" source="_bOeSMBTBEemgv7xuEKHfSA" target="_tzAkYBTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//Platoon/members"/>
       </edges>
-      <edges xmi:id="__CDDQBTBEemgv7xuEKHfSA" source="_6tYwIBTBEemgv7xuEKHfSA" target="_fnWW8BTBEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord/platoonvehicle"/>
+      <edges xmi:id="_tKnjUBTwEemgv7xuEKHfSA" source="_sTfHABTwEemgv7xuEKHfSA" target="_bOeSMBTBEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//PlatooningSystem/platoon"/>
       </edges>
-      <edges xmi:id="_9wriABTBEemgv7xuEKHfSA" source="_6tYwIBTBEemgv7xuEKHfSA" target="_mMdpwBTBEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord/joiningvehicle"/>
+      <edges xmi:id="_tYQ9wBTwEemgv7xuEKHfSA" source="_sTfHABTwEemgv7xuEKHfSA" target="_bRctsBTBEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//PlatooningSystem/platoon"/>
       </edges>
-      <edges xmi:id="_njNaQBTBEemgv7xuEKHfSA" source="_mMdpwBTBEemgv7xuEKHfSA" target="_jWhXYBTBEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//JoiningVehicle/insertsIn"/>
-      </edges>
-      <edges xmi:id="_vauJEBTBEemgv7xuEKHfSA" source="_mMdpwBTBEemgv7xuEKHfSA" target="_tzAkYBTBEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//Vehicle/follows"/>
+      <edges xmi:id="_tlIVEBTwEemgv7xuEKHfSA" source="_sTfHABTwEemgv7xuEKHfSA" target="_mMdpwBTBEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//PlatooningSystem/vehicles"/>
       </edges>
     </lhs>
     <rhs xmi:id="_W8020RTBEemgv7xuEKHfSA" name="Rhs">
-      <nodes xmi:id="_bOeSMRTBEemgv7xuEKHfSA" incoming="_cZR4cRTBEemgv7xuEKHfSA" outgoing="_1ZChoRTBEemgv7xuEKHfSA _VfOa8BTCEemgv7xuEKHfSA _WHc4kBTCEemgv7xuEKHfSA">
+      <nodes xmi:id="_bOeSMRTBEemgv7xuEKHfSA" incoming="_cZR4cRTBEemgv7xuEKHfSA _tKnjURTwEemgv7xuEKHfSA" outgoing="_1ZChoRTBEemgv7xuEKHfSA _VfOa8BTCEemgv7xuEKHfSA _WHc4kBTCEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//Platoon"/>
         <attributes xmi:id="_m6DTERTCEemgv7xuEKHfSA" value="x+1">
           <type href="../model/platoon.ecore#//Platoon/length"/>
         </attributes>
       </nodes>
-      <nodes xmi:id="_bRctsRTBEemgv7xuEKHfSA" outgoing="_cZR4cRTBEemgv7xuEKHfSA _gsbIoRTBEemgv7xuEKHfSA">
+      <nodes xmi:id="_bRctsRTBEemgv7xuEKHfSA" incoming="_tYQ9wRTwEemgv7xuEKHfSA" outgoing="_cZR4cRTBEemgv7xuEKHfSA _gsbIoRTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//Platoon"/>
       </nodes>
-      <nodes xmi:id="_fnW-ABTBEemgv7xuEKHfSA" incoming="_gsbIoRTBEemgv7xuEKHfSA __CDDQRTBEemgv7xuEKHfSA" outgoing="_kP-H4RTBEemgv7xuEKHfSA">
+      <nodes xmi:id="_fnW-ABTBEemgv7xuEKHfSA" incoming="_gsbIoRTBEemgv7xuEKHfSA" outgoing="_kP-H4RTBEemgv7xuEKHfSA _tUDSUBTTEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
       </nodes>
-      <nodes xmi:id="_jWhXYRTBEemgv7xuEKHfSA" incoming="_kP-H4RTBEemgv7xuEKHfSA _TfPqwhTDEemgv7xuEKHfSA">
+      <nodes xmi:id="_jWhXYRTBEemgv7xuEKHfSA" incoming="_kP-H4RTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//FrontGap"/>
       </nodes>
-      <nodes xmi:id="_tzAkYRTBEemgv7xuEKHfSA" incoming="_1ZChoRTBEemgv7xuEKHfSA _ba36ABTCEemgv7xuEKHfSA _TfPqwxTDEemgv7xuEKHfSA">
+      <nodes xmi:id="_tzAkYRTBEemgv7xuEKHfSA" incoming="_1ZChoRTBEemgv7xuEKHfSA _ba36ABTCEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
       </nodes>
-      <nodes xmi:id="_6tYwIRTBEemgv7xuEKHfSA" outgoing="__CDDQRTBEemgv7xuEKHfSA _Qx7lYBTCEemgv7xuEKHfSA _TfPqwRTDEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord"/>
-      </nodes>
-      <nodes xmi:id="_OR-KEBTCEemgv7xuEKHfSA" incoming="_Qx7lYBTCEemgv7xuEKHfSA _VfOa8BTCEemgv7xuEKHfSA _WHc4kBTCEemgv7xuEKHfSA" outgoing="_ba36ABTCEemgv7xuEKHfSA">
+      <nodes xmi:id="_OR-KEBTCEemgv7xuEKHfSA" incoming="_VfOa8BTCEemgv7xuEKHfSA _WHc4kBTCEemgv7xuEKHfSA _tUDSUBTTEemgv7xuEKHfSA _opc8sBTZEemgv7xuEKHfSA" outgoing="_ba36ABTCEemgv7xuEKHfSA _nvTooBTZEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
         <attributes xmi:id="_rT5oMBTCEemgv7xuEKHfSA" value="y">
           <type href="../model/platoon.ecore#//Vehicle/id"/>
@@ -269,11 +253,11 @@
           <type href="../model/platoon.ecore#//PlatoonVehicle/position"/>
         </attributes>
       </nodes>
-      <nodes xmi:id="_TfN1kBTDEemgv7xuEKHfSA" incoming="_TfPqwRTDEemgv7xuEKHfSA" outgoing="_TfPqwhTDEemgv7xuEKHfSA _TfPqwxTDEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//JoiningVehicle"/>
-        <attributes xmi:id="_TfN1kRTDEemgv7xuEKHfSA" value="y">
-          <type href="../model/platoon.ecore#//Vehicle/id"/>
-        </attributes>
+      <nodes xmi:id="_qnxgABTYEemgv7xuEKHfSA" incoming="_nvTooBTZEemgv7xuEKHfSA" outgoing="_opc8sBTZEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//JoinPlatoonCoord"/>
+      </nodes>
+      <nodes xmi:id="_sTfHARTwEemgv7xuEKHfSA" outgoing="_tKnjURTwEemgv7xuEKHfSA _tYQ9wRTwEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//PlatooningSystem"/>
       </nodes>
       <edges xmi:id="_cZR4cRTBEemgv7xuEKHfSA" source="_bRctsRTBEemgv7xuEKHfSA" target="_bOeSMRTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//Platoon/follows"/>
@@ -287,12 +271,6 @@
       <edges xmi:id="_1ZChoRTBEemgv7xuEKHfSA" source="_bOeSMRTBEemgv7xuEKHfSA" target="_tzAkYRTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//Platoon/members"/>
       </edges>
-      <edges xmi:id="__CDDQRTBEemgv7xuEKHfSA" source="_6tYwIRTBEemgv7xuEKHfSA" target="_fnW-ABTBEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord/platoonvehicle"/>
-      </edges>
-      <edges xmi:id="_Qx7lYBTCEemgv7xuEKHfSA" source="_6tYwIRTBEemgv7xuEKHfSA" target="_OR-KEBTCEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord/platoonvehicle"/>
-      </edges>
       <edges xmi:id="_VfOa8BTCEemgv7xuEKHfSA" source="_bOeSMRTBEemgv7xuEKHfSA" target="_OR-KEBTCEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//Platoon/follower"/>
       </edges>
@@ -302,14 +280,20 @@
       <edges xmi:id="_ba36ABTCEemgv7xuEKHfSA" source="_OR-KEBTCEemgv7xuEKHfSA" target="_tzAkYRTBEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//Vehicle/follows"/>
       </edges>
-      <edges xmi:id="_TfPqwRTDEemgv7xuEKHfSA" source="_6tYwIRTBEemgv7xuEKHfSA" target="_TfN1kBTDEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//JoinPlatoonCoord/joiningvehicle"/>
+      <edges xmi:id="_tUDSUBTTEemgv7xuEKHfSA" source="_fnW-ABTBEemgv7xuEKHfSA" target="_OR-KEBTCEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//Vehicle/isAwareOf"/>
       </edges>
-      <edges xmi:id="_TfPqwhTDEemgv7xuEKHfSA" source="_TfN1kBTDEemgv7xuEKHfSA" target="_jWhXYRTBEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//JoiningVehicle/insertsIn"/>
+      <edges xmi:id="_nvTooBTZEemgv7xuEKHfSA" source="_OR-KEBTCEemgv7xuEKHfSA" target="_qnxgABTYEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//Vehicle/joinCord"/>
       </edges>
-      <edges xmi:id="_TfPqwxTDEemgv7xuEKHfSA" source="_TfN1kBTDEemgv7xuEKHfSA" target="_tzAkYRTBEemgv7xuEKHfSA">
-        <type href="../model/platoon.ecore#//Vehicle/follows"/>
+      <edges xmi:id="_opc8sBTZEemgv7xuEKHfSA" source="_qnxgABTYEemgv7xuEKHfSA" target="_OR-KEBTCEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//JoinPlatoonCoord/joiningVehicle"/>
+      </edges>
+      <edges xmi:id="_tKnjURTwEemgv7xuEKHfSA" source="_sTfHARTwEemgv7xuEKHfSA" target="_bOeSMRTBEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//PlatooningSystem/platoon"/>
+      </edges>
+      <edges xmi:id="_tYQ9wRTwEemgv7xuEKHfSA" source="_sTfHARTwEemgv7xuEKHfSA" target="_bRctsRTBEemgv7xuEKHfSA">
+        <type href="../model/platoon.ecore#//PlatooningSystem/platoon"/>
       </edges>
     </rhs>
     <mappings xmi:id="_bOeSMhTBEemgv7xuEKHfSA" origin="_bOeSMBTBEemgv7xuEKHfSA" image="_bOeSMRTBEemgv7xuEKHfSA"/>
@@ -317,7 +301,7 @@
     <mappings xmi:id="_fnW-ARTBEemgv7xuEKHfSA" origin="_fnWW8BTBEemgv7xuEKHfSA" image="_fnW-ABTBEemgv7xuEKHfSA"/>
     <mappings xmi:id="_jWhXYhTBEemgv7xuEKHfSA" origin="_jWhXYBTBEemgv7xuEKHfSA" image="_jWhXYRTBEemgv7xuEKHfSA"/>
     <mappings xmi:id="_tzAkYhTBEemgv7xuEKHfSA" origin="_tzAkYBTBEemgv7xuEKHfSA" image="_tzAkYRTBEemgv7xuEKHfSA"/>
-    <mappings xmi:id="_6tYwIhTBEemgv7xuEKHfSA" origin="_6tYwIBTBEemgv7xuEKHfSA" image="_6tYwIRTBEemgv7xuEKHfSA"/>
-    <mappings xmi:id="_TfPqwBTDEemgv7xuEKHfSA" origin="_mMdpwBTBEemgv7xuEKHfSA" image="_TfN1kBTDEemgv7xuEKHfSA"/>
+    <mappings xmi:id="_qnxgARTYEemgv7xuEKHfSA" origin="_qGibMBTYEemgv7xuEKHfSA" image="_qnxgABTYEemgv7xuEKHfSA"/>
+    <mappings xmi:id="_sTfHAhTwEemgv7xuEKHfSA" origin="_sTfHABTwEemgv7xuEKHfSA" image="_sTfHARTwEemgv7xuEKHfSA"/>
   </units>
 </henshin:Module>
