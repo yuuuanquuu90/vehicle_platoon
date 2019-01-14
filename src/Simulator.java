@@ -1,5 +1,6 @@
 import java.io.File;
-//10.01.2019
+
+//14.01.2019
 public class Simulator {
 	private static final String RESOURCEPATH = "henshin";
 	private static final String LEADER = "leader.henshin";
@@ -23,6 +24,8 @@ public class Simulator {
 		// Start Simulation
 		simu_JoiningManeuver(platoon);
 	}
+
+
 
 	private static void initPlatoon(HenshinPlatoon platoon) {
 		System.out.println("\n*****************************************");
@@ -49,6 +52,7 @@ public class Simulator {
 
 		// The Joining-Collaboration was created.
 		platoon.runRules(HenshinPlatoon.RULE_CREATEJOININGCOLLABORATION, true);
+		platoon.runRules(HenshinPlatoon.RULE_CREATEJOININGCOLLABORATION, true);
 
 		// The JV has moved to the Insert Position and waits the command to join.
 		platoon.runRules(HenshinPlatoon.RULE_MOVETOINSERTIONPOSITION, true);
@@ -59,7 +63,7 @@ public class Simulator {
 
 		// All Followers after F2 (the temporary leader) have switched their platoon and
 		// see F2 as the new leader.
-		platoon.runRules(HenshinPlatoon.RULE_SWITCHPLATOONANDLEADERLOOP);
+		platoon.runRules(HenshinPlatoon.RULE_SWITCHPLATOONFLAGLOOP);
 
 		// F2 has formed the Gap.
 		platoon.runRules(HenshinPlatoon.RULE_FORMGAP, true);

@@ -9,31 +9,58 @@ import org.eclipse.emf.henshin.model.Module;
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet;
 
 public class HenshinPlatoon {
+	// Rules for Leader
 	public static final String RULE_RECEIVEREQUEST = "receiveRequest";
 	public static final String RULE_COMPUTEGAP = "computeGap";
 	public static final String RULE_CREATEJOININGCOLLABORATION = "createJoiningCollaboration";
+	public static final String RULE_ADDFOLLOWER = "addFollower";
+	public static final String RULE_CREATELEADER = "createLeader";
+	public static final String RULE_REMOVEJOININGCOLLABORATION = "removeJoiningCollaboration";
+	// Rules for Follower
 	public static final String RULE_FORMTEMPORALPLATOON = "formTemporalPlatoon";
-	public static final String RULE_SWITCHPLATOONANDLEADERLOOP = "switchPlatoonAndLeaderLoop";
+	public static final String RULE_SWITCHPLATOONFLAGLOOP = "switchPlatoonFlagLoop";
 	public static final String RULE_FORMGAP = "formGap";
 	public static final String RULE_MERGEGAP = "mergeGap";
 	public static final String RULE_DISABLELEADERFLAG = "disableLeaderFlag";
 	public static final String RULE_SETPLATOONBACK = "setPlatoonback";
 	public static final String RULE_MERGEPLATOON = "mergePlatoon";
+
+	// Rules for Joning-Vehicle
 	public static final String RULE_MOVETOINSERTIONPOSITION = "moveToInsertionPosition";
 	public static final String RULE_INSERTINGAP = "insertInGap";
 	public static final String RULE_BECOMESNEWFOLLOWER = "becomesNewFollower";
-	public static final String RULE_ADDFOLLOWER = "addFollower";
-	public static final String RULE_CREATELEADER = "createLeader";
-	public static final String RULE_REMOVEJOININGCOLLABORATION = "removeJoiningCollaboration";
+
+	// A module represents a specific Henshin_Diagram, which includes a set of
+	// Rules.
+	public static Module[] module;
 	public static final int MODULE_LEADER = 0;
 	public static final int MODULE_FOLLOWER = 1;
 	public static final int MODULE_JV = 2;
+
+	// The relative path of the set of resources.
 	private HenshinResourceSet resourceSet;
-	public static Module[] module;
+
+	// A EGraph refers to a specific Instance Diagram in the form of xmi which basis
+	// of the Class Diagram.
 	public static EGraph graph;
+
+	// A Interface for interpreter engines. EngineImpl() refers to a default Engine
+	// Implementation.
 	public static Engine engine;
+
+	// A set of rules, which should be injected in the EGraph as noted above.
 	private HashMap<String, Rule> rules;
 
+	/**
+	 * 
+	 * @param resourcePath The Path of EGraph. The relative path of the set of
+	 *                     resources.
+	 * @param diagramPath  The Path of EGraph. A EGraph refers to a specific
+	 *                     Instance Diagram in the form of xmi which basis of the
+	 *                     Class Diagram.
+	 * @param modulePath   The Path of Henshin Diagram. A module represents a
+	 *                     specific Henshin_Diagram, which includes a set of Rules.
+	 */
 	public HenshinPlatoon(String resourcePath, String diagramPath, String... modulePath) {
 		// Create a resource set with a base directory:
 		resourceSet = new HenshinResourceSet(resourcePath);
@@ -65,7 +92,7 @@ public class HenshinPlatoon {
 
 	private void doInjectLeaderRules() {
 		doInjectRules(RULE_RECEIVEREQUEST, module[0]);
-		doInjectRules(RULE_COMPUTEGAP, module[0]);
+		doInjectRules(RULE_COMPUTEGAP, module[0], new Parameter("p", 2));
 		doInjectRules(RULE_CREATEJOININGCOLLABORATION, module[0]);
 		doInjectRules(RULE_ADDFOLLOWER, module[0]);
 		doInjectRules(RULE_CREATELEADER, module[0]);
@@ -74,7 +101,7 @@ public class HenshinPlatoon {
 
 	private void doInjectFollowerRules() {
 		doInjectRules(RULE_FORMTEMPORALPLATOON, module[1]);
-		doInjectRules(RULE_SWITCHPLATOONANDLEADERLOOP, module[1]);
+		doInjectRules(RULE_SWITCHPLATOONFLAGLOOP, module[1]);
 		doInjectRules(RULE_FORMGAP, module[1], new Parameter("x", 10));
 		doInjectRules(RULE_MERGEGAP, module[1]);
 		doInjectRules(RULE_DISABLELEADERFLAG, module[1]);

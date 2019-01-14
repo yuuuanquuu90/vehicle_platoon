@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_7lTP8BApEemaxME4ksF8NA">
   <imports href="../model/platoon.ecore#/"/>
-  <units xsi:type="henshin:Rule" xmi:id="_kS3dUBJwEemXSdwWs8EEPg" name="formTemporalPlatoon">
+  <units xsi:type="henshin:Rule" xmi:id="_kS3dUBJwEemXSdwWs8EEPg" name="createTemporalPlatoon">
     <parameters xmi:id="_CMluABKQEemxh73iffOwnA" name="x" kind="VAR">
       <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </parameters>
@@ -111,7 +111,7 @@
     <mappings xmi:id="_y7cM8RP0Eemf69h7uCbdZw" origin="_yYG2YBP0Eemf69h7uCbdZw" image="_y7cM8BP0Eemf69h7uCbdZw"/>
     <mappings xmi:id="_LeS3shP1Eemf69h7uCbdZw" origin="_LeS3sBP1Eemf69h7uCbdZw" image="_LeS3sRP1Eemf69h7uCbdZw"/>
   </units>
-  <units xsi:type="henshin:Rule" xmi:id="_dXl6ABKAEemXSdwWs8EEPg" name="switchPlatoonAndLeader">
+  <units xsi:type="henshin:Rule" xmi:id="_dXl6ABKAEemXSdwWs8EEPg" name="switchPlatoonFlag">
     <parameters xmi:id="_LXU_QBKQEemxh73iffOwnA" name="x" kind="VAR">
       <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </parameters>
@@ -356,7 +356,7 @@
     <mappings xmi:id="_9W-fMhTaEemgv7xuEKHfSA" origin="_9W-fMBTaEemgv7xuEKHfSA" image="_9W-fMRTaEemgv7xuEKHfSA"/>
     <mappings xmi:id="_96c_shTaEemgv7xuEKHfSA" origin="_96c_sBTaEemgv7xuEKHfSA" image="_96c_sRTaEemgv7xuEKHfSA"/>
   </units>
-  <units xsi:type="henshin:Rule" xmi:id="_jljTEBTbEemgv7xuEKHfSA" name="switchPlatoonFlag">
+  <units xsi:type="henshin:Rule" xmi:id="_jljTEBTbEemgv7xuEKHfSA" name="switchTemporalPlatoonFlag">
     <parameters xmi:id="_jF7wIBThEemgv7xuEKHfSA" name="x" kind="VAR">
       <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </parameters>
@@ -466,7 +466,8 @@
     </rhs>
     <mappings xmi:id="_DWk7EhTkEemgv7xuEKHfSA" origin="_DWk7EBTkEemgv7xuEKHfSA" image="_DWk7ERTkEemgv7xuEKHfSA"/>
   </units>
-  <units xsi:type="henshin:LoopUnit" xmi:id="_-ujcgBTiEemgv7xuEKHfSA" name="switchPlatoonFlagLoop" subUnit="_jljTEBTbEemgv7xuEKHfSA"/>
+  <units xsi:type="henshin:LoopUnit" xmi:id="_-ujcgBTiEemgv7xuEKHfSA" name="switchTemporalPlatoonFlagLoop" subUnit="_jljTEBTbEemgv7xuEKHfSA"/>
   <units xsi:type="henshin:SequentialUnit" xmi:id="_9jw9ABTlEemgv7xuEKHfSA" name="mergePlatoon" subUnits="_-ujcgBTiEemgv7xuEKHfSA _Mrj_YBTiEemgv7xuEKHfSA"/>
-  <units xsi:type="henshin:LoopUnit" xmi:id="_9Uq7oBTmEemgv7xuEKHfSA" name="switchPlatoonAndLeaderLoop" subUnit="_dXl6ABKAEemXSdwWs8EEPg"/>
+  <units xsi:type="henshin:LoopUnit" xmi:id="_9Uq7oBTmEemgv7xuEKHfSA" name="switchPlatoonFlagLoop" subUnit="_dXl6ABKAEemXSdwWs8EEPg"/>
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_o6D3MBfcEemSUuDP3onTvg" name="formTemporalPlatoon" subUnits="_kS3dUBJwEemXSdwWs8EEPg _9Uq7oBTmEemgv7xuEKHfSA"/>
 </henshin:Module>

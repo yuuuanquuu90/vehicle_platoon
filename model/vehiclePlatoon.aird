@@ -12,14 +12,6 @@
     <semanticResources>../henshin/joiningvehicle.henshin_diagram</semanticResources>
     <semanticResources>../henshin/Result_switchPlatoonAndLeader.xmi</semanticResources>
     <semanticResources>../henshin/PlatooningSystem.xmi</semanticResources>
-    <semanticResources>../henshin/Result_00_receiveRequest.xmi</semanticResources>
-    <semanticResources>../henshin/Result_01_receiveRequest.xmi</semanticResources>
-    <semanticResources>../henshin/Result_02_computeGap.xmi</semanticResources>
-    <semanticResources>../henshin/Result_03_createJoiningCollaboration.xmi</semanticResources>
-    <semanticResources>../henshin/Result_04_moveToInsertionPosition.xmi</semanticResources>
-    <semanticResources>../henshin/Result_05_formTemporalPlatoon.xmi</semanticResources>
-    <semanticResources>../henshin/Result_07_formGap.xmi</semanticResources>
-    <semanticResources>../henshin/Result_12_removeJoiningCollaboration.xmi</semanticResources>
     <semanticResources>../henshin/default.henshin_statespace</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_VtQQIA9BEemk45y7BcQzXA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>

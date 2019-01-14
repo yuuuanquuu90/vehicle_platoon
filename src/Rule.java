@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 import org.eclipse.emf.henshin.interpreter.UnitApplication;
 import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl;
 import org.eclipse.emf.henshin.model.Module;
@@ -25,9 +27,10 @@ public class Rule {
 	}
 
 	public boolean executeRule() {
-		System.out.print(Simulator.count++ + ". Execute Rule: " + this.name);
+		DecimalFormat df = new DecimalFormat("00");
+		System.out.print(df.format(Simulator.count++) + ". Execute Rule: " + this.name);
 		if (!rule.execute(null)) {
-			System.out.print("   -> Warning: Step " + (int) (Simulator.count - 1) + " " + name + " is not executed.\n");
+			System.out.print("   -> Warning: Step " + df.format(Simulator.count - 1) + " " + name + " is not executed.\n");
 			return false;
 		} else {
 			System.out.println();
