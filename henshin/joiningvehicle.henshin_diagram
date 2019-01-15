@@ -333,10 +333,10 @@
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_z2Ky8BS8Eemgv7xuEKHfSA" type="4001" source="_adhIoRS8Eemgv7xuEKHfSA" target="_yok-cBS8Eemgv7xuEKHfSA">
     <children xmi:type="notation:DecorationNode" xmi:id="_z2Ky8xS8Eemgv7xuEKHfSA" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_z2Ky9BS8Eemgv7xuEKHfSA" x="-18" y="15"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_z2Ky9BS8Eemgv7xuEKHfSA" x="-53" y="-3"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_z2Ky9RS8Eemgv7xuEKHfSA" type="6002">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_z2Ky9hS8Eemgv7xuEKHfSA" x="-39" y="-4"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_z2Ky9hS8Eemgv7xuEKHfSA" x="-74" y="-1"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_z2Ky8RS8Eemgv7xuEKHfSA" fontName="Segoe UI"/>
     <element xmi:type="henshin:Edge" href="joiningvehicle.henshin#_z2KL4BS8Eemgv7xuEKHfSA"/>

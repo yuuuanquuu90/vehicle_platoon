@@ -9,7 +9,7 @@ public class Rule {
 	private String name;
 	private UnitApplication rule;
 
-	public Rule(String name, Module module, Parameter... paras) {
+	public Rule(String name, Module module) {
 		this.name = name;
 		rule = new UnitApplicationImpl(HenshinPlatoon.engine);
 		rule.setEGraph(HenshinPlatoon.graph);
@@ -17,7 +17,7 @@ public class Rule {
 		if (unit == null)
 			System.out.println("Rule: " + name + " is not defined.");
 		rule.setUnit(unit);
-		setParameters(paras);
+//		setParameters(paras);
 
 	}
 
@@ -26,11 +26,15 @@ public class Rule {
 			rule.setParameterValue(p.getName(), p.getValue());
 	}
 
-	public boolean executeRule() {
+	public boolean executeRule(Parameter... paras) {
+		//Set Parameters
+		setParameters(paras);
+		//Executes Rule
 		DecimalFormat df = new DecimalFormat("00");
 		System.out.print(df.format(Simulator.count++) + ". Execute Rule: " + this.name);
 		if (!rule.execute(null)) {
-			System.out.print("   -> Warning: Step " + df.format(Simulator.count - 1) + " " + name + " is not executed.\n");
+			System.out.print(
+					"   -> Warning: Step " + df.format(Simulator.count - 1) + " " + name + " is not executed.\n");
 			return false;
 		} else {
 			System.out.println();

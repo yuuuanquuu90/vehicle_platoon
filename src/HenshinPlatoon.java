@@ -30,12 +30,16 @@ public class HenshinPlatoon {
 	public static final String RULE_INSERTINGAP = "insertInGap";
 	public static final String RULE_BECOMESNEWFOLLOWER = "becomesNewFollower";
 
+	// Rules for Read Rules
+	public static final String RULE_FOLLOWERVISIBILITY = "followerVisibility";
+	public static final String RULE_TEST = "joiningVehicleInCoord";
 	// A module represents a specific Henshin_Diagram, which includes a set of
 	// Rules.
 	public static Module[] module;
 	public static final int MODULE_LEADER = 0;
 	public static final int MODULE_FOLLOWER = 1;
 	public static final int MODULE_JV = 2;
+	public static final int MODULE_READRULES = 3;
 
 	// The relative path of the set of resources.
 	private HenshinResourceSet resourceSet;
@@ -75,11 +79,11 @@ public class HenshinPlatoon {
 		rules = new HashMap<String, Rule>();
 
 		// Init Henshin Modules
-		module = new Module[3];
+		module = new Module[4];
 		module[MODULE_LEADER] = resourceSet.getModule(modulePath[0], false);
 		module[MODULE_FOLLOWER] = resourceSet.getModule(modulePath[1], false);
 		module[MODULE_JV] = resourceSet.getModule(modulePath[2], false);
-
+		module[MODULE_READRULES] = resourceSet.getModule(modulePath[3], false);
 		// Inject Leader Rules
 		doInjectLeaderRules();
 
@@ -88,11 +92,14 @@ public class HenshinPlatoon {
 
 		// Inject Joining-Vehicle Rules
 		doInjectJVRules();
+
+		// Inject Read Rules
+		doInjectReadRules();
 	}
 
 	private void doInjectLeaderRules() {
 		doInjectRules(RULE_RECEIVEREQUEST, module[0]);
-		doInjectRules(RULE_COMPUTEGAP, module[0], new Parameter("p", 2));
+		doInjectRules(RULE_COMPUTEGAP, module[0]);
 		doInjectRules(RULE_CREATEJOININGCOLLABORATION, module[0]);
 		doInjectRules(RULE_ADDFOLLOWER, module[0]);
 		doInjectRules(RULE_CREATELEADER, module[0]);
@@ -102,7 +109,7 @@ public class HenshinPlatoon {
 	private void doInjectFollowerRules() {
 		doInjectRules(RULE_FORMTEMPORALPLATOON, module[1]);
 		doInjectRules(RULE_SWITCHPLATOONFLAGLOOP, module[1]);
-		doInjectRules(RULE_FORMGAP, module[1], new Parameter("x", 10));
+		doInjectRules(RULE_FORMGAP, module[1]);
 		doInjectRules(RULE_MERGEGAP, module[1]);
 		doInjectRules(RULE_DISABLELEADERFLAG, module[1]);
 		doInjectRules(RULE_MERGEPLATOON, module[1]);
@@ -110,22 +117,27 @@ public class HenshinPlatoon {
 
 	private void doInjectJVRules() {
 		doInjectRules(RULE_MOVETOINSERTIONPOSITION, module[2]);
-		doInjectRules(RULE_INSERTINGAP, module[2], new Parameter("lengthOfVehicle", 3));
+		doInjectRules(RULE_INSERTINGAP, module[2]);
 		doInjectRules(RULE_BECOMESNEWFOLLOWER, module[2]);
 	}
 
-	private void doInjectRules(String name, Module module, Parameter... paras) {
-		rules.put(name, new Rule(name, module, paras));
+	private void doInjectReadRules() {
+		doInjectRules(RULE_FOLLOWERVISIBILITY, module[3]);
+		doInjectRules(RULE_TEST, module[3]);
 	}
 
-	public boolean runRules(String ruleName, boolean saveFile) {
-		boolean out = runRules(ruleName);
+	private void doInjectRules(String name, Module module) {
+		rules.put(name, new Rule(name, module));
+	}
+
+	public boolean runRules(String ruleName, boolean saveFile, Parameter... paras) {
+		boolean out = runRules(ruleName,paras);
 		saveFilebyRuleName(ruleName);
 		return out;
 	}
 
-	public boolean runRules(String ruleName) {
-		return rules.get(ruleName).executeRule();
+	public boolean runRules(String ruleName, Parameter...paras) {
+		return rules.get(ruleName).executeRule(paras);
 	}
 
 	public void saveFilebyRuleName(String ruleName) {

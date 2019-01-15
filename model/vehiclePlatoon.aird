@@ -13,6 +13,22 @@
     <semanticResources>../henshin/Result_switchPlatoonAndLeader.xmi</semanticResources>
     <semanticResources>../henshin/PlatooningSystem.xmi</semanticResources>
     <semanticResources>../henshin/default.henshin_statespace</semanticResources>
+    <semanticResources>../henshin/readrules.henshin</semanticResources>
+    <semanticResources>../henshin/readrules.henshin_diagram</semanticResources>
+    <semanticResources>../henshin/Result_02_removeFollowers.xmi</semanticResources>
+    <semanticResources>../henshin/Result_00_receiveRequest.xmi</semanticResources>
+    <semanticResources>../henshin/Result_01_receiveRequest.xmi</semanticResources>
+    <semanticResources>../henshin/Result_02_computeGap.xmi</semanticResources>
+    <semanticResources>../henshin/Result_03_createJoiningCollaboration.xmi</semanticResources>
+    <semanticResources>../henshin/Result_04_createJoiningCollaboration.xmi</semanticResources>
+    <semanticResources>../henshin/Result_05_moveToInsertionPosition.xmi</semanticResources>
+    <semanticResources>../henshin/Result_06_formTemporalPlatoon.xmi</semanticResources>
+    <semanticResources>../henshin/Result_08_formGap.xmi</semanticResources>
+    <semanticResources>../henshin/Result_09_insertInGap.xmi</semanticResources>
+    <semanticResources>../henshin/Result_10_becomesNewFollower.xmi</semanticResources>
+    <semanticResources>../henshin/Result_11_mergeGap.xmi</semanticResources>
+    <semanticResources>../henshin/Result_12_mergePlatoon.xmi</semanticResources>
+    <semanticResources>../henshin/Result_13_removeJoiningCollaboration.xmi</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_VtQQIA9BEemk45y7BcQzXA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_mwLlpw9BEemk45y7BcQzXA" name="platoon class diagram" repPath="#_mwEQ4A9BEemk45y7BcQzXA">
@@ -626,17 +642,12 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nMXLUw9BEemk45y7BcQzXA" name="[1..*] follower" sourceNode="_nLzKoA9BEemk45y7BcQzXA" targetNode="_nMAmAA9BEemk45y7BcQzXA">
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nMXLUw9BEemk45y7BcQzXA" name="[0..*] follower" sourceNode="_nLzKoA9BEemk45y7BcQzXA" targetNode="_nMAmAA9BEemk45y7BcQzXA">
       <target xmi:type="ecore:EReference" href="platoon.ecore#//Platoon/follower"/>
       <semanticElements xmi:type="ecore:EReference" href="platoon.ecore#//Platoon/follower"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nMYZcA9BEemk45y7BcQzXA" description="_nMWkQA9BEemk45y7BcQzXA" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nMYZcQ9BEemk45y7BcQzXA" showIcon="false">
-          <customFeatures>labelSize</customFeatures>
-          <labelFormat>bold</labelFormat>
-        </centerLabelStyle>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_nMYZcg9BEemk45y7BcQzXA" showIcon="false" labelColor="39,76,114">
-          <customFeatures>labelSize</customFeatures>
-        </endLabelStyle>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_zpg9QBi9EemT1M-_abP2VA" description="_nMaOoA9BEemk45y7BcQzXA" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_zpg9QRi9EemT1M-_abP2VA" showIcon="false"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_zpg9Qhi9EemT1M-_abP2VA" labelSize="6" showIcon="false" labelColor="39,76,114"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
@@ -794,7 +805,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_njP98BP6Eemf69h7uCbdZw" sourceNode="_nLzKoA9BEemk45y7BcQzXA" targetNode="_nMAmAA9BEemk45y7BcQzXA" beginLabel="[0..1] platoon" endLabel="[2..*] members">
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_njP98BP6Eemf69h7uCbdZw" sourceNode="_nLzKoA9BEemk45y7BcQzXA" targetNode="_nMAmAA9BEemk45y7BcQzXA" beginLabel="[0..1] platoon" endLabel="[1..*] members">
       <target xmi:type="ecore:EReference" href="platoon.ecore#//Platoon/members"/>
       <semanticElements xmi:type="ecore:EReference" href="platoon.ecore#//Platoon/members"/>
       <semanticElements xmi:type="ecore:EReference" href="platoon.ecore#//PlatoonVehicle/platoon"/>
