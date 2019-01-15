@@ -17,8 +17,6 @@ public class Rule {
 		if (unit == null)
 			System.out.println("Rule: " + name + " is not defined.");
 		rule.setUnit(unit);
-//		setParameters(paras);
-
 	}
 
 	private void setParameters(Parameter... paras) {
@@ -27,9 +25,9 @@ public class Rule {
 	}
 
 	public boolean executeRule(Parameter... paras) {
-		//Set Parameters
+		// Set Parameters
 		setParameters(paras);
-		//Executes Rule
+		// Executes Rule
 		DecimalFormat df = new DecimalFormat("00");
 		System.out.print(df.format(Simulator.count++) + ". Execute Rule: " + this.name);
 		if (!rule.execute(null)) {
