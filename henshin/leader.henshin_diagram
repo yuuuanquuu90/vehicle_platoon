@@ -66,7 +66,7 @@
       </children>
     </children>
     <element xmi:type="henshin:Rule" href="leader.henshin#_UCodMA9IEemk45y7BcQzXA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UCpEQQ9IEemk45y7BcQzXA" x="-35" y="20" width="413" height="402"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UCpEQQ9IEemk45y7BcQzXA" x="-30" y="20" width="413" height="402"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_6rbBcBAEEemRvI2GMuT3pA" type="2001" fontName="Segoe UI" italic="true" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LEUigxAFEemRvI2GMuT3pA" source="defaultAction">
@@ -130,7 +130,7 @@
       </children>
     </children>
     <element xmi:type="henshin:Rule" href="leader.henshin#_6rQpYBAEEemRvI2GMuT3pA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6rbogBAEEemRvI2GMuT3pA" x="385" y="20" width="410" height="401"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6rbogBAEEemRvI2GMuT3pA" x="399" y="20" width="410" height="401"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_RekRABAkEemaxME4ksF8NA" type="2001" fontName="Segoe UI" italic="true" lineColor="0">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aL6boBAkEemaxME4ksF8NA" source="defaultAction">

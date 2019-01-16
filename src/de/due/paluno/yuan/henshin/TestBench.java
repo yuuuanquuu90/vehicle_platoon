@@ -9,9 +9,16 @@ public class TestBench {
 	private static final String FOLLOWER = "follower.henshin";
 	private static final String JONINGVEHICLE = "joiningvehicle.henshin";
 	private static final String READRULES = "readrules.henshin";
-	private static final String LEADER_DIAGRAM_PATH = "PlatooningSystem_Leader.xmi";
-	private static final String FOLLOWER_DIAGRAM_PATH = "PlatooningSystem_Follower.xmi";
-	private static final String JV_DIAGRAM_PATH = "PlatooningSystem_JoiningVehicle.xmi";
+	private static final String PLATOONSYSTEM_DIAGRAM_PATH = "PlatooningSystem.xmi";
+	private static final String LEADER_DIAGRAM_PATH = "StateOfLeader.xmi";
+	private static final String FOLLOWER_DIAGRAM_PATH = "StateOfFollower.xmi";
+	private static final String JV_DIAGRAM_PATH = "StateOfJoiningVehicle.xmi";
+
+	// Name of Roles
+	public static final String ROLE_LEADER = "platoonLeader";
+	public static final String ROLE_FOLLOWER = "platoonFollower";
+	public static final String ROLE_JOININGVEHICLE = "joiningVehicle";
+
 	// Rules for Leader
 	public static final String RULE_RECEIVEREQUEST = "receiveRequest";
 	public static final String RULE_COMPUTEGAP = "computeGap";
@@ -35,8 +42,13 @@ public class TestBench {
 	public static final String RULE_BECOMESNEWFOLLOWER = "becomesNewFollower";
 
 	// Rules for Read Rules
-	public static final String RULE_FOLLOWERVISIBILITY = "followerVisibility";
-	public static final String RULE_JOININGVEHICLEINCOORD = "joiningVehicleInCoord";
+	public static final String READRULE_FOLLOWERINCOORD = "readRuleFollowerInCoord";
+	public static final String READRULE_JOININGVEHICLEINCOORD = "readRuleJoiningVehicleInCoord";
+
+	// Command
+	public static final String READRULE = "Read Rule";
+	public static final String REFLECTION = "Reflection";
+	public static final String MODELTRANSMISSION = "Model Transmission";
 
 	public static void main(String[] args) {
 		// Check Existence of the Instance Diagram
@@ -46,12 +58,17 @@ public class TestBench {
 
 		// Create the related graphs of each roles.
 		String[] modules = { LEADER, FOLLOWER, JONINGVEHICLE, READRULES };
-		HenshinGraph leader = new HenshinGraph("PlatoonLeader", RESOURCEPATH, LEADER_DIAGRAM_PATH, modules);
-		HenshinGraph follower = new HenshinGraph("PlatoonFollower", RESOURCEPATH, FOLLOWER_DIAGRAM_PATH, modules);
-		HenshinGraph joiningVehicle = new HenshinGraph("JoiningVehicle", RESOURCEPATH, JV_DIAGRAM_PATH, modules);
+		HenshinGraph init = new HenshinGraph("PlatoonSystem", RESOURCEPATH, PLATOONSYSTEM_DIAGRAM_PATH, modules);
+
+		// Init View
+		initPlatoon(init);
+
+		HenshinGraph leader = new HenshinGraph(ROLE_LEADER, RESOURCEPATH, LEADER_DIAGRAM_PATH, modules);
+		HenshinGraph follower = new HenshinGraph(ROLE_FOLLOWER, RESOURCEPATH, FOLLOWER_DIAGRAM_PATH, modules);
+		HenshinGraph joiningVehicle = new HenshinGraph(ROLE_JOININGVEHICLE, RESOURCEPATH, JV_DIAGRAM_PATH, modules);
 
 		// Delete Files
-		deleteFiles("henshin");
+		deleteFiles(RESOURCEPATH);
 
 		// Start Simple Joining Maneuver
 //		simpleSimu_JoiningManeuver(leader);
@@ -62,30 +79,93 @@ public class TestBench {
 
 	private static void simu_JoiningManeuver(HenshinGraph leader, HenshinGraph follower, HenshinGraph joiningVehicle) {
 
-		// Init Leader View
-		initPlatoon(leader);
-
 		System.out.println("\n*****************************************");
 		System.out.println("Start the Simulation of Joining Maneuver.");
 		System.out.println("*****************************************\n");
 
+		System.out.println("\n******Communication receives a Request.******");
 		// A platoon accepts simultaneously only one JV. The 2. Rule was rejected.
-		leader.runRule(RULE_RECEIVEREQUEST, true);
+		leader.runRule(RULE_RECEIVEREQUEST);
 
 		// The Follower 2 was selected to form Gap.
 		leader.runRule(RULE_COMPUTEGAP, new Parameter("p", 4));
 
 		// The Joining-Collaboration was created.
-		leader.runRule(RULE_CREATEJOININGCOLLABORATION, true);
+		leader.runRule(RULE_CREATEJOININGCOLLABORATION);
 
 		// Leader sends its model to joiningVehicle
-		String positiveAck = "Result_ContextModel_PositiveAck.xmi";
-		leader.saveFilebyFileName(positiveAck);
+		String positiveAck = "ContextModel_PositiveAck.xmi";
+		leader.simu_SendModel(positiveAck);
 
-		// JV receives model form leader
-		joiningVehicle.setGraph(positiveAck);
-		joiningVehicle.runRule(RULE_JOININGVEHICLEINCOORD);
-		joiningVehicle.saveFilebyOverwrite();
+		System.out.println("\n******Communication between Leader and JoiningVehicle******");
+		// JV receives model from leader, which was limited by read rules.
+		joiningVehicle.simu_GetModel(positiveAck);
+
+		// JV has moved to the Insert Position and waits the command to join.
+		joiningVehicle.runRule(RULE_MOVETOINSERTIONPOSITION);
+		// Reflection
+		leader.runRule(RULE_MOVETOINSERTIONPOSITION, REFLECTION);
+
+		// Leader sends its model to follower
+		String FormGapCommand = "ContextModel_FormGapCommand.xmi";
+		leader.simu_SendModel(FormGapCommand);
+
+		System.out.println("\n******Communication between Leader and Follower******");
+		// Follower receives model from leader, which was limited by read rules.
+		follower.simu_GetModel(FormGapCommand);
+
+		// A temporary platoon has be created. F2 has switched his role to a leader.
+		follower.runRule(RULE_FORMTEMPORALPLATOON);
+		// Reflection
+		leader.runRule(RULE_FORMTEMPORALPLATOON, REFLECTION);
+
+		// F2 has formed the Gap.
+		follower.runRule(RULE_FORMGAP, new Parameter("x", 10));
+		// Reflection
+		leader.runRule(RULE_FORMGAP, REFLECTION, new Parameter("x", 10));
+
+		// Leader sends its model to joiningVehicle
+		String JoinCommand = "ContextModel_JoinCommand.xmi";
+		leader.simu_SendModel(JoinCommand);
+
+		System.out.println("\n******Communication between Leader and JoiningVehicle******");
+		// JoiningVehicle receives model from leader, which was limited by read rules.
+		joiningVehicle.simu_GetModel(JoinCommand);
+
+		// Leader communicates now with JV
+		System.out.println("\n******Communication between Leader and JoiningVehicle******");
+		// JV has inserted in Gap
+		joiningVehicle.runRule(RULE_INSERTINGAP, new Parameter("lengthOfVehicle", 3));
+		// Reflection
+		leader.runRule(RULE_INSERTINGAP, REFLECTION, new Parameter("lengthOfVehicle", 3));
+
+		// JV has became a new Follower in platoon.
+		joiningVehicle.runRule(RULE_BECOMESNEWFOLLOWER);
+		// Reflection
+		leader.runRule(RULE_BECOMESNEWFOLLOWER, REFLECTION);
+
+		// Leader sends its model to follower
+		String MergePlatoonCommand = "ContextModel_MergePlatoonCommand.xmi";
+		leader.simu_SendModel(MergePlatoonCommand);
+
+		System.out.println("\n******Communication between Leader and Follower******");
+		// Follower receives model from leader, which was limited by read rules.
+		follower.simu_GetModel(MergePlatoonCommand);
+
+		// F2 has merges its gap.
+		follower.runRule(RULE_MERGEGAP);
+		// Reflection
+		leader.runRule(RULE_MERGEGAP, REFLECTION);
+
+		// F2 has switched from a temporary leader to a normal follower again.
+		follower.runRule(RULE_MERGEPLATOON);
+		follower.runRule(READRULE_FOLLOWERINCOORD);
+		// Reflection
+		leader.runRule(RULE_MERGEPLATOON, REFLECTION);
+
+		System.out.println("\n******Collaboraton finished******");
+		// The Joining-Collaboration has removed.
+		leader.runRule(RULE_REMOVEJOININGCOLLABORATION);
 	}
 
 	public static void checkExistenceOfInstanceDiagram(String filePath) {
@@ -97,53 +177,50 @@ public class TestBench {
 
 	private static void simpleSimu_JoiningManeuver(HenshinGraph leader) {
 
-		// Init Platoon
-		initPlatoon(leader);
-
 		System.out.println("\n*****************************************");
 		System.out.println("Start the Simulation of Joining Maneuver.");
 		System.out.println("*****************************************\n");
 		// A platoon accepts simultaneously only one JV. The 2. Rule was rejected.
-		leader.runRule(RULE_RECEIVEREQUEST, true);
-		leader.runRule(RULE_RECEIVEREQUEST, true);
+		leader.runRule(RULE_RECEIVEREQUEST);
+		leader.runRule(RULE_RECEIVEREQUEST);
 
 		// The Follower 2 was selected to form Gap.
-		leader.runRule(RULE_COMPUTEGAP, true, new Parameter("p", 4));
+		leader.runRule(RULE_COMPUTEGAP, new Parameter("p", 4));
 
 		// The Joining-Collaboration was created.
-		leader.runRule(RULE_CREATEJOININGCOLLABORATION, true);
-		leader.runRule(RULE_CREATEJOININGCOLLABORATION, true);
+		leader.runRule(RULE_CREATEJOININGCOLLABORATION);
+		leader.runRule(RULE_CREATEJOININGCOLLABORATION);
 
 		// The JV has moved to the Insert Position and waits the command to join.
-		leader.runRule(RULE_MOVETOINSERTIONPOSITION, true);
+		leader.runRule(RULE_MOVETOINSERTIONPOSITION);
 
 		// Leader communicates now with F2.
 		// A temporary platoon has be created. F2 has switched his role to a leader.
-		leader.runRule(RULE_FORMTEMPORALPLATOON, true);
+		leader.runRule(RULE_FORMTEMPORALPLATOON);
 
 		// All Followers after F2 (the temporary leader) have switched their platoon and
 		// see F2 as the new leader.
 		leader.runRule(RULE_SWITCHPLATOONFLAGLOOP);
 
 		// F2 has formed the Gap.
-		leader.runRule(RULE_FORMGAP, true, new Parameter("x", 10));
+		leader.runRule(RULE_FORMGAP, new Parameter("x", 10));
 
 		// Leader communicates now with JV
 		// JV has inserted in Gap
-		leader.runRule(RULE_INSERTINGAP, true, new Parameter("lengthOfVehicle", 3));
+		leader.runRule(RULE_INSERTINGAP, new Parameter("lengthOfVehicle", 3));
 
 		// JV has became a new Follower in platoon.
-		leader.runRule(RULE_BECOMESNEWFOLLOWER, true);
+		leader.runRule(RULE_BECOMESNEWFOLLOWER);
 
 		// Leader communicates now with F2
 		// F2 has merges its gap.
-		leader.runRule(RULE_MERGEGAP, true);
+		leader.runRule(RULE_MERGEGAP);
 
 		// F2 has switched from a temporary leader to a normal follower again.
-		leader.runRule(RULE_MERGEPLATOON, true);
+		leader.runRule(RULE_MERGEPLATOON);
 
 		// The Joining-Collaboration has removed.
-		leader.runRule(RULE_REMOVEJOININGCOLLABORATION, true);
+		leader.runRule(RULE_REMOVEJOININGCOLLABORATION);
 
 	}
 
@@ -151,17 +228,24 @@ public class TestBench {
 		System.out.println("\n*****************************************");
 		System.out.println("Initialize the platoon.");
 		System.out.println("*****************************************\n");
+
+		// Create a platoon with one leader and 6 followers.
 		platoon.runRule(RULE_CREATELEADER);
 		while (platoon.runRule(RULE_ADDFOLLOWER))
 			;
 		platoon.saveFilebyOverwrite();
+
+		// Overwrite the diagram of leader.
+		platoon.saveFilebyFileName(LEADER_DIAGRAM_PATH);
+//		platoon.saveFilebyFileName(FOLLOWER_DIAGRAM_PATH);
+//		platoon.saveFilebyFileName(JV_DIAGRAM_PATH);
 	}
 
 	private static void deleteFiles(String direction) {
 		File dir = new File(direction);
 		String[] children = dir.list();
 		for (String s : children) {
-			if (s.contains("Result_") && s.contains("xmi")) {
+			if ((s.contains("Result_") && s.contains("xmi")) || s.contains("Context") && s.contains("xmi")) {
 				System.out.println("File: " + s + " has be deleted.");
 				new File(dir, s).delete();
 			}

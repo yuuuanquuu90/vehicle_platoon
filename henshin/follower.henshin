@@ -21,7 +21,7 @@
           <type href="../model/platoon.ecore#//Platoon/desiredGapSize"/>
         </attributes>
       </nodes>
-      <nodes xmi:id="_Gf68gBJxEemXSdwWs8EEPg" outgoing="_HgfBoBJxEemXSdwWs8EEPg">
+      <nodes xmi:id="_Gf68gBJxEemXSdwWs8EEPg" outgoing="_HgfBoBJxEemXSdwWs8EEPg _lWAEMBmVEemCS4qt52Cxgg">
         <type href="../model/platoon.ecore#//PlatooningSystem"/>
       </nodes>
       <nodes xmi:id="_RsU4oBJzEemXSdwWs8EEPg" incoming="_13LlUBP0Eemf69h7uCbdZw">
@@ -36,6 +36,9 @@
       <nodes xmi:id="_LeS3sBP1Eemf69h7uCbdZw" incoming="_Mr8WkBP1Eemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
       </nodes>
+      <nodes xmi:id="_kUQ6YBmVEemCS4qt52Cxgg" incoming="_lWAEMBmVEemCS4qt52Cxgg">
+        <type href="../model/platoon.ecore#//JoiningVehicle"/>
+      </nodes>
       <edges xmi:id="_HgfBoBJxEemXSdwWs8EEPg" source="_Gf68gBJxEemXSdwWs8EEPg" target="_ur8J8BJwEemXSdwWs8EEPg">
         <type href="../model/platoon.ecore#//PlatooningSystem/platoon"/>
       </edges>
@@ -48,6 +51,9 @@
       <edges xmi:id="_Mr8WkBP1Eemf69h7uCbdZw" source="_yYG2YBP0Eemf69h7uCbdZw" target="_LeS3sBP1Eemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//Vehicle/follows"/>
       </edges>
+      <edges xmi:id="_lWAEMBmVEemCS4qt52Cxgg" source="_Gf68gBJxEemXSdwWs8EEPg" target="_kUQ6YBmVEemCS4qt52Cxgg">
+        <type href="../model/platoon.ecore#//PlatooningSystem/vehicles"/>
+      </edges>
     </lhs>
     <rhs xmi:id="_kUIBkRJwEemXSdwWs8EEPg" name="Rhs">
       <nodes xmi:id="_ur8J8RJwEemXSdwWs8EEPg" incoming="_HgfBoRJxEemXSdwWs8EEPg _lUEBUBKAEemXSdwWs8EEPg">
@@ -59,7 +65,7 @@
           <type href="../model/platoon.ecore#//Platoon/desiredGapSize"/>
         </attributes>
       </nodes>
-      <nodes xmi:id="_Gf68gRJxEemXSdwWs8EEPg" outgoing="_HgfBoRJxEemXSdwWs8EEPg _D4-nEBJ_EemXSdwWs8EEPg">
+      <nodes xmi:id="_Gf68gRJxEemXSdwWs8EEPg" outgoing="_HgfBoRJxEemXSdwWs8EEPg _D4-nEBJ_EemXSdwWs8EEPg _lWAEMRmVEemCS4qt52Cxgg">
         <type href="../model/platoon.ecore#//PlatooningSystem"/>
       </nodes>
       <nodes xmi:id="_oaht4BJ-EemXSdwWs8EEPg" incoming="_13LlURP0Eemf69h7uCbdZw">
@@ -80,8 +86,11 @@
           <type href="../model/platoon.ecore#//PlatoonVehicle/position"/>
         </attributes>
       </nodes>
-      <nodes xmi:id="_LeS3sRP1Eemf69h7uCbdZw" incoming="_OuVsIBP1Eemf69h7uCbdZw">
+      <nodes xmi:id="_LeS3sRP1Eemf69h7uCbdZw" incoming="_OuVsIBP1Eemf69h7uCbdZw _n6kSsBmVEemCS4qt52Cxgg">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
+      </nodes>
+      <nodes xmi:id="_kUQ6YRmVEemCS4qt52Cxgg" incoming="_lWAEMRmVEemCS4qt52Cxgg" outgoing="_n6kSsBmVEemCS4qt52Cxgg">
+        <type href="../model/platoon.ecore#//JoiningVehicle"/>
       </nodes>
       <edges xmi:id="_HgfBoRJxEemXSdwWs8EEPg" source="_Gf68gRJxEemXSdwWs8EEPg" target="_ur8J8RJwEemXSdwWs8EEPg">
         <type href="../model/platoon.ecore#//PlatooningSystem/platoon"/>
@@ -104,12 +113,19 @@
       <edges xmi:id="_NZVagBQVEemf69h7uCbdZw" source="_CWVIkBJ_EemXSdwWs8EEPg" target="_y7cM8BP0Eemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//Platoon/members"/>
       </edges>
+      <edges xmi:id="_lWAEMRmVEemCS4qt52Cxgg" source="_Gf68gRJxEemXSdwWs8EEPg" target="_kUQ6YRmVEemCS4qt52Cxgg">
+        <type href="../model/platoon.ecore#//PlatooningSystem/vehicles"/>
+      </edges>
+      <edges xmi:id="_n6kSsBmVEemCS4qt52Cxgg" source="_kUQ6YRmVEemCS4qt52Cxgg" target="_LeS3sRP1Eemf69h7uCbdZw">
+        <type href="../model/platoon.ecore#//Vehicle/isAwareOf"/>
+      </edges>
     </rhs>
     <mappings xmi:id="_ur8xABJwEemXSdwWs8EEPg" origin="_ur8J8BJwEemXSdwWs8EEPg" image="_ur8J8RJwEemXSdwWs8EEPg"/>
     <mappings xmi:id="_Gf7jkBJxEemXSdwWs8EEPg" origin="_Gf68gBJxEemXSdwWs8EEPg" image="_Gf68gRJxEemXSdwWs8EEPg"/>
     <mappings xmi:id="_oaht4RJ-EemXSdwWs8EEPg" origin="_RsU4oBJzEemXSdwWs8EEPg" image="_oaht4BJ-EemXSdwWs8EEPg"/>
     <mappings xmi:id="_y7cM8RP0Eemf69h7uCbdZw" origin="_yYG2YBP0Eemf69h7uCbdZw" image="_y7cM8BP0Eemf69h7uCbdZw"/>
     <mappings xmi:id="_LeS3shP1Eemf69h7uCbdZw" origin="_LeS3sBP1Eemf69h7uCbdZw" image="_LeS3sRP1Eemf69h7uCbdZw"/>
+    <mappings xmi:id="_kUQ6YhmVEemCS4qt52Cxgg" origin="_kUQ6YBmVEemCS4qt52Cxgg" image="_kUQ6YRmVEemCS4qt52Cxgg"/>
   </units>
   <units xsi:type="henshin:Rule" xmi:id="_dXl6ABKAEemXSdwWs8EEPg" name="switchPlatoonFlag">
     <parameters xmi:id="_LXU_QBKQEemxh73iffOwnA" name="x" kind="VAR">

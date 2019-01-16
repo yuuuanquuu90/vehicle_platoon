@@ -83,46 +83,78 @@ public class HenshinGraph {
 	}
 
 	/**
+	 * by this method command =Rule
 	 * 
-	 * @param name     name of rule
-	 * @param saveFile if save the result as new file
-	 * @param paras    if necessarily for the in or out parameter of rule
-	 * @return if saveFile=true, a new file will be created with name:
-	 *         Result_xx_ruleName.xmi
+	 * @param name  name of rule
+	 * @param paras if necessarily for the in or out parameter of rule
+	 * @return
 	 */
-	public boolean runRule(String name, boolean saveFile, Parameter... paras) {
-		boolean out = runRule(name, paras);
-
-		// If saveFile is necessary
-		if (saveFile)
-			saveFilebyRuleName(name);
-
-		return out;
+	public boolean runRule(String name, Parameter... paras) {
+		String command = "Behavior Rule";
+		return runRule(name, command, paras);
 	}
 
-	public boolean runRule(String name, Parameter... paras) {
+	/**
+	 * @param name    name of rule
+	 * @param command only relevant for output on console
+	 * @param paras   if necessarily for the in or out parameter of rule
+	 * @return
+	 */
+	public boolean runRule(String name, String command, Parameter... paras) {
 		// If this rule has not been injected.
 		if (rules.get(name) == null)
 			doInjectRule(name);
-
 		// Else run this rule directly.
-		count++;
 		if (rules.get(name).executeRule(paras)) {
-			System.out.println(printHead(count) + "Rule is executed: " + name);
+			System.out.println(command + "_" + this.name + "_" + printHead(count++) + ": " + name);
+
+			// Save file
+			saveFilebyRuleName(name);
+			saveFilebyOverwrite();
 			return true;
 		} else {
-			System.out.println(printHead(count) + "Rule is not executed: " + name + " WARNING !!!!!");
+			System.out.println(command + "_" + "Rule has not executed: " + name + " WARNING !!!!!");
 			return false;
 		}
+
 	}
 
 	public void saveFilebyRuleName(String rulename) {
 		int c = count - 1;
-		resourceSet.saveEObject(graph.getRoots().get(0), "Result_" + printHead(c) + filename + ".xmi");
+		// Get Filename e.g. xx.xmi -> xx
+		String tmp = filename.substring(7, filename.length() - 4);
+		tmp = "Result_" + tmp + "_" + printHead(c) + "_" + rulename + ".xmi";
+		resourceSet.saveEObject(graph.getRoots().get(0), tmp);
 	}
 
 	public void saveFilebyFileName(String filename) {
 		resourceSet.saveEObject(graph.getRoots().get(0), filename);
+	}
+
+	public void simu_SendModel(String modelName) {
+		saveFilebyFileName(modelName);
+		count++;
+		System.out.println("Context Model: " + modelName + " has sent.");
+	}
+
+	public void simu_GetModel(String modelName) {
+		// Overwrite model
+		if (this.name.equals(TestBench.ROLE_FOLLOWER) || this.name.equals(TestBench.ROLE_JOININGVEHICLE)) {
+			setGraph(modelName);
+			this.rules = new HashMap<String, HenshinRule>();
+		} else {
+			System.out.println("WARNING: Leader can not run this method.");
+			return;
+		}
+		// Check Role and set read rules
+		if (this.name.equals(TestBench.ROLE_FOLLOWER)) {
+			// Overwrite model
+			runRule(TestBench.READRULE_FOLLOWERINCOORD, TestBench.READRULE);
+		} else if (this.name.equals(TestBench.ROLE_JOININGVEHICLE)) {
+			// Overwrite model
+			runRule(TestBench.READRULE_JOININGVEHICLEINCOORD, TestBench.READRULE);
+		}
+		saveFilebyOverwrite();
 	}
 
 	public void saveFilebyOverwrite() {
@@ -135,7 +167,7 @@ public class HenshinGraph {
 
 	private String printHead(int count) {
 		DecimalFormat df = new DecimalFormat("00");
-		return this.name + "_" + df.format(count) + "_";
+		return df.format(count);
 	}
 
 }

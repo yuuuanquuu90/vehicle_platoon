@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<platoon:PlatooningSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:platoon="http://www.example.org/platoon" xsi:schemaLocation="http://www.example.org/platoon ../model/platoon.ecore">
+  <vehicles xsi:type="platoon:JoiningVehicle" id="7" joinCord="//@platoon.0/@joinplatoonCord" wantsToJoin="//@platoon.0/@leader" locatedIn="//@platoon.0/@follower.3/@marks"/>
+  <platoon length="7" desiredGapSize="5" members="//@platoon.0/@leader 1 2 3 4 5 6">
+    <leader joinCord="//@platoon.0/@joinplatoonCord" joiningRequest="7" platoon="//@platoon.0"/>
+    <follower id="1" follows="//@platoon.0/@leader" position="1" platoon="//@platoon.0"/>
+    <follower id="2" follows="1" position="2" platoon="//@platoon.0"/>
+    <follower id="3" follows="2" position="3" platoon="//@platoon.0"/>
+    <follower id="4" follows="3" joinCord="//@platoon.0/@joinplatoonCord" position="4" platoon="//@platoon.0">
+      <marks/>
+    </follower>
+    <follower id="5" follows="4" position="5" platoon="//@platoon.0"/>
+    <follower id="6" follows="5" position="6" platoon="//@platoon.0"/>
+    <joinplatoonCord cordManager="//@platoon.0/@leader" gapMaker="4" joiningVehicle="7"/>
+  </platoon>
+</platoon:PlatooningSystem>
