@@ -14,9 +14,6 @@
     <parameters xmi:id="__Xp9MBiuEemT1M-_abP2VA" name="d" kind="VAR">
       <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </parameters>
-    <parameters xmi:id="_kllo4BiuEemT1M-_abP2VA" name="l" kind="VAR">
-      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </parameters>
     <lhs xmi:id="_UqeFcBitEemT1M-_abP2VA" name="Lhs">
       <nodes xmi:id="_adf0ABitEemT1M-_abP2VA" outgoing="_qxK20BitEemT1M-_abP2VA _LXC80BiuEemT1M-_abP2VA _Rmik8BiuEemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//JoinPlatoonCoord"/>
@@ -41,9 +38,6 @@
       </nodes>
       <nodes xmi:id="_c5ZZQBiuEemT1M-_abP2VA" outgoing="_0E854BiuEemT1M-_abP2VA _1fiokBiuEemT1M-_abP2VA _7G1BMBiuEemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//Platoon"/>
-        <attributes xmi:id="_hvnhUBiuEemT1M-_abP2VA" value="l">
-          <type href="../model/platoon.ecore#//Platoon/length"/>
-        </attributes>
       </nodes>
       <nodes xmi:id="_6b504BiuEemT1M-_abP2VA" incoming="_7G1BMBiuEemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
@@ -117,9 +111,6 @@
       </nodes>
       <nodes xmi:id="_c5ZZQRiuEemT1M-_abP2VA" outgoing="_0E854RiuEemT1M-_abP2VA _1fiokRiuEemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//Platoon"/>
-        <attributes xmi:id="_hvnhURiuEemT1M-_abP2VA" value="l-1">
-          <type href="../model/platoon.ecore#//Platoon/length"/>
-        </attributes>
       </nodes>
       <edges xmi:id="_qxK20RitEemT1M-_abP2VA" source="_adf0ARitEemT1M-_abP2VA" target="_pGfdsRitEemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//JoinPlatoonCoord/joiningVehicle"/>
@@ -158,9 +149,6 @@
     <parameters xmi:id="_-qUxkxi4EemT1M-_abP2VA" name="d" kind="VAR">
       <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </parameters>
-    <parameters xmi:id="_VEjxsRizEemT1M-_abP2VA" name="p" kind="VAR">
-      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </parameters>
     <lhs xmi:id="_L7WcZRixEemT1M-_abP2VA" name="Lhs">
       <nodes xmi:id="_eGYCYBixEemT1M-_abP2VA" outgoing="_hrIikBixEemT1M-_abP2VA _h-BCUBixEemT1M-_abP2VA _pAVOgBixEemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//JoinPlatoonCoord"/>
@@ -188,9 +176,6 @@
       </nodes>
       <nodes xmi:id="_rsboYBixEemT1M-_abP2VA" incoming="_sFMtsBixEemT1M-_abP2VA" outgoing="_tWZ24BixEemT1M-_abP2VA _z4jf0BiyEemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//Platoon"/>
-        <attributes xmi:id="_8vjVsBiyEemT1M-_abP2VA" value="p">
-          <type href="../model/platoon.ecore#//Platoon/length"/>
-        </attributes>
       </nodes>
       <nodes xmi:id="_rSZiUBiyEemT1M-_abP2VA" incoming="_z4jf0BiyEemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
@@ -270,9 +255,6 @@
       </nodes>
       <nodes xmi:id="_rsboYRixEemT1M-_abP2VA" incoming="_sFMtsRixEemT1M-_abP2VA" outgoing="_tWZ24RixEemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//Platoon"/>
-        <attributes xmi:id="_8vjVsRiyEemT1M-_abP2VA" value="p-1">
-          <type href="../model/platoon.ecore#//Platoon/length"/>
-        </attributes>
       </nodes>
       <edges xmi:id="_hrIikRixEemT1M-_abP2VA" source="_eGYCYRixEemT1M-_abP2VA" target="_gyMIYRixEemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//JoinPlatoonCoord/gapMaker"/>
@@ -315,9 +297,6 @@
     <parameters xmi:id="_2JOlIxi2EemT1M-_abP2VA" name="f" kind="VAR">
       <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </parameters>
-    <parameters xmi:id="_2JOlJBi2EemT1M-_abP2VA" name="l" kind="VAR">
-      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </parameters>
     <lhs xmi:id="_chekVRi1EemT1M-_abP2VA" name="Lhs">
       <nodes xmi:id="_ycx-ABi1EemT1M-_abP2VA" outgoing="_1fSFsBi1EemT1M-_abP2VA _48KcQBi1EemT1M-_abP2VA _5Zq3oBi1EemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//JoinPlatoonCoord"/>
@@ -342,9 +321,6 @@
       </nodes>
       <nodes xmi:id="_77y2IBi1EemT1M-_abP2VA" incoming="__p6GoBi1EemT1M-_abP2VA" outgoing="_oBKeQBi2EemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//Platoon"/>
-        <attributes xmi:id="_tabpABi2EemT1M-_abP2VA" value="l">
-          <type href="../model/platoon.ecore#//Platoon/length"/>
-        </attributes>
       </nodes>
       <nodes xmi:id="_l1jiUBi2EemT1M-_abP2VA" incoming="_oBKeQBi2EemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
@@ -415,9 +391,6 @@
       </nodes>
       <nodes xmi:id="_77y2IRi1EemT1M-_abP2VA" incoming="__p6GoRi1EemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//Platoon"/>
-        <attributes xmi:id="_tabpARi2EemT1M-_abP2VA" value="l-1">
-          <type href="../model/platoon.ecore#//Platoon/length"/>
-        </attributes>
       </nodes>
       <edges xmi:id="_1fSFsRi1EemT1M-_abP2VA" source="_ycylEBi1EemT1M-_abP2VA" target="_z5QjERi1EemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//JoinPlatoonCoord/joiningVehicle"/>
@@ -452,15 +425,9 @@
     <parameters xmi:id="_CoJxsBi8EemT1M-_abP2VA" name="f" kind="VAR">
       <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </parameters>
-    <parameters xmi:id="_CoJxsRi8EemT1M-_abP2VA" name="l" kind="VAR">
-      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </parameters>
     <lhs xmi:id="_pT57sBi6EemT1M-_abP2VA" name="Lhs">
       <nodes xmi:id="_vRt98Bi6EemT1M-_abP2VA" outgoing="_0hrbsBi6EemT1M-_abP2VA _9D7woBi6EemT1M-_abP2VA _k5k-EBi9EemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//Platoon"/>
-        <attributes xmi:id="_GxEH0Bi8EemT1M-_abP2VA" value="l">
-          <type href="../model/platoon.ecore#//Platoon/length"/>
-        </attributes>
       </nodes>
       <nodes xmi:id="_vjSPEBi6EemT1M-_abP2VA" incoming="_0hrbsBi6EemT1M-_abP2VA" outgoing="_8j4-oBi6EemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//Platoon"/>
@@ -517,9 +484,6 @@
     <rhs xmi:id="_pT57sRi6EemT1M-_abP2VA" name="Rhs">
       <nodes xmi:id="_vRt98Ri6EemT1M-_abP2VA" outgoing="_0hrbsRi6EemT1M-_abP2VA _9D7woRi6EemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//Platoon"/>
-        <attributes xmi:id="_GxEH0Ri8EemT1M-_abP2VA" value="l-1">
-          <type href="../model/platoon.ecore#//Platoon/length"/>
-        </attributes>
       </nodes>
       <nodes xmi:id="_vjSPERi6EemT1M-_abP2VA" incoming="_0hrbsRi6EemT1M-_abP2VA" outgoing="_8j4-oRi6EemT1M-_abP2VA">
         <type href="../model/platoon.ecore#//Platoon"/>

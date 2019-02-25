@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <platoon:PlatooningSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:platoon="http://www.example.org/platoon" xsi:schemaLocation="http://www.example.org/platoon ../model/platoon.ecore">
-  <platoon length="2" desiredGapSize="5" members="//@platoon.0/@leader 7">
+  <platoon length="5" desiredGapSize="5" members="//@platoon.0/@leader 7">
     <leader joinCord="//@platoon.0/@joinplatoonCord" platoon="//@platoon.0"/>
     <follower id="7" joinCord="//@platoon.0/@joinplatoonCord" position="4" platoon="//@platoon.0"/>
     <joinplatoonCord cordManager="//@platoon.0/@leader" gapMaker="4" joiningVehicle="7"/>

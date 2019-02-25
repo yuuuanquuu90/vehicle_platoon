@@ -29,7 +29,7 @@ public class Simulator {
 		deleteFiles("henshin");
 		
 		// Start Simulation
-		simu_JoiningManeuver(platoonLeader);
+//		simu_JoiningManeuver(platoonLeader);
 
 		// test
 //		test(platoonLeader);

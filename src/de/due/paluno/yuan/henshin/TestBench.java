@@ -62,7 +62,8 @@ public class TestBench {
 
 		// Init View
 		initPlatoon(init);
-
+		
+		//HenshinGraph(String name, String resourcePath, String diagramPath, String... modulePath)
 		HenshinGraph leader = new HenshinGraph(ROLE_LEADER, RESOURCEPATH, LEADER_DIAGRAM_PATH, modules);
 		HenshinGraph follower = new HenshinGraph(ROLE_FOLLOWER, RESOURCEPATH, FOLLOWER_DIAGRAM_PATH, modules);
 		HenshinGraph joiningVehicle = new HenshinGraph(ROLE_JOININGVEHICLE, RESOURCEPATH, JV_DIAGRAM_PATH, modules);
@@ -87,7 +88,7 @@ public class TestBench {
 		// A platoon accepts simultaneously only one JV. The 2. Rule was rejected.
 		leader.runRule(RULE_RECEIVEREQUEST);
 
-		// The Follower 2 was selected to form Gap.
+		// The Follower x was selected to form Gap.
 		leader.runRule(RULE_COMPUTEGAP, new Parameter("p", 4));
 
 		// The Joining-Collaboration was created.
@@ -95,73 +96,59 @@ public class TestBench {
 
 		// Leader sends its model to joiningVehicle
 		String positiveAck = "ContextModel_PositiveAck.xmi";
-		leader.simu_SendModel(positiveAck);
+		leader.sendSharedPlatoonStructure(positiveAck);
 
 		System.out.println("\n******Communication between Leader and JoiningVehicle******");
 		// JV receives model from leader, which was limited by read rules.
-		joiningVehicle.simu_GetModel(positiveAck);
+		joiningVehicle.getSharedPlatoonStructure(positiveAck);
 
 		// JV has moved to the Insert Position and waits the command to join.
-		joiningVehicle.runRule(RULE_MOVETOINSERTIONPOSITION);
-		// Reflection
-		leader.runRule(RULE_MOVETOINSERTIONPOSITION, REFLECTION);
+		joiningVehicle.runRuleAnddoRelection(leader,RULE_MOVETOINSERTIONPOSITION);
 
 		// Leader sends its model to follower
 		String FormGapCommand = "ContextModel_FormGapCommand.xmi";
-		leader.simu_SendModel(FormGapCommand);
+		leader.sendSharedPlatoonStructure(FormGapCommand);
 
 		System.out.println("\n******Communication between Leader and Follower******");
 		// Follower receives model from leader, which was limited by read rules.
-		follower.simu_GetModel(FormGapCommand);
+		follower.getSharedPlatoonStructure(FormGapCommand);
 
 		// A temporary platoon has be created. F2 has switched his role to a leader.
-		follower.runRule(RULE_FORMTEMPORALPLATOON);
-		// Reflection
-		leader.runRule(RULE_FORMTEMPORALPLATOON, REFLECTION);
+		follower.runRuleAnddoRelection(leader,RULE_FORMTEMPORALPLATOON);
 
 		// F2 has formed the Gap.
-		follower.runRule(RULE_FORMGAP, new Parameter("x", 10));
-		// Reflection
-		leader.runRule(RULE_FORMGAP, REFLECTION, new Parameter("x", 10));
+		follower.runRuleAnddoRelection(leader,RULE_FORMGAP, new Parameter("x", 10));
 
 		// Leader sends its model to joiningVehicle
 		String JoinCommand = "ContextModel_JoinCommand.xmi";
-		leader.simu_SendModel(JoinCommand);
+		leader.sendSharedPlatoonStructure(JoinCommand);
 
 		System.out.println("\n******Communication between Leader and JoiningVehicle******");
 		// JoiningVehicle receives model from leader, which was limited by read rules.
-		joiningVehicle.simu_GetModel(JoinCommand);
+		joiningVehicle.getSharedPlatoonStructure(JoinCommand);
 
 		// Leader communicates now with JV
 		System.out.println("\n******Communication between Leader and JoiningVehicle******");
 		// JV has inserted in Gap
-		joiningVehicle.runRule(RULE_INSERTINGAP, new Parameter("lengthOfVehicle", 3));
-		// Reflection
-		leader.runRule(RULE_INSERTINGAP, REFLECTION, new Parameter("lengthOfVehicle", 3));
+		joiningVehicle.runRuleAnddoRelection(leader,RULE_INSERTINGAP, new Parameter("lengthOfVehicle", 3));
 
 		// JV has became a new Follower in platoon.
-		joiningVehicle.runRule(RULE_BECOMESNEWFOLLOWER);
-		// Reflection
-		leader.runRule(RULE_BECOMESNEWFOLLOWER, REFLECTION);
+		joiningVehicle.runRuleAnddoRelection(leader, RULE_BECOMESNEWFOLLOWER);
 
 		// Leader sends its model to follower
 		String MergePlatoonCommand = "ContextModel_MergePlatoonCommand.xmi";
-		leader.simu_SendModel(MergePlatoonCommand);
+		leader.sendSharedPlatoonStructure(MergePlatoonCommand);
 
 		System.out.println("\n******Communication between Leader and Follower******");
 		// Follower receives model from leader, which was limited by read rules.
-		follower.simu_GetModel(MergePlatoonCommand);
+		follower.getSharedPlatoonStructure(MergePlatoonCommand);
 
 		// F2 has merges its gap.
-		follower.runRule(RULE_MERGEGAP);
-		// Reflection
-		leader.runRule(RULE_MERGEGAP, REFLECTION);
+		follower.runRuleAnddoRelection(leader,RULE_MERGEGAP);
 
 		// F2 has switched from a temporary leader to a normal follower again.
-		follower.runRule(RULE_MERGEPLATOON);
+		follower.runRuleAnddoRelection(leader,RULE_MERGEPLATOON);
 		follower.runRule(READRULE_FOLLOWERINCOORD);
-		// Reflection
-		leader.runRule(RULE_MERGEPLATOON, REFLECTION);
 
 		System.out.println("\n******Collaboraton finished******");
 		// The Joining-Collaboration has removed.

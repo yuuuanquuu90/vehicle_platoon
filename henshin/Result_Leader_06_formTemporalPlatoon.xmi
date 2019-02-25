@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
 <platoon:PlatooningSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:platoon="http://www.example.org/platoon" xsi:schemaLocation="http://www.example.org/platoon ../model/platoon.ecore">
-  <vehicles xsi:type="platoon:JoiningVehicle" id="7" isAwareOf="3" joinCord="//@platoon.0/@joinplatoonCord" wantsToJoin="//@platoon.0/@leader" locatedIn="//@platoon.1/@leader/@marks"/>
+  <vehicles xsi:type="platoon:JoiningVehicle" id="7" isAwareOf="3" joinCord="//@platoon.0/@joinplatoonCord" locatedIn="//@platoon.1/@leader/@marks"/>
   <platoon length="4" desiredGapSize="5" members="//@platoon.0/@leader 1 2 3">
-    <leader joinCord="//@platoon.0/@joinplatoonCord" joiningRequest="7" platoon="//@platoon.0"/>
+    <leader joinCord="//@platoon.0/@joinplatoonCord" platoon="//@platoon.0"/>
     <follower id="1" follows="//@platoon.0/@leader" position="1" platoon="//@platoon.0"/>
     <follower id="2" follows="1" position="2" platoon="//@platoon.0"/>
     <follower id="3" follows="2" position="3" platoon="//@platoon.0"/>

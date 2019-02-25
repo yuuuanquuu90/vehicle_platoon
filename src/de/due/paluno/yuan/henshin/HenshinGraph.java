@@ -9,24 +9,22 @@ import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl;
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl;
 import org.eclipse.emf.henshin.model.Module;
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet;
-
+//25.02.2019
 public class HenshinGraph {
 	// Name of Graph
 	private String name;
 	private String filename;
 
-	// The relative path of the set of resources.
+	// A resource set for the working directory.
 	private HenshinResourceSet resourceSet;
 
-	// A EGraph refers to a specific Instance Diagram in the form of xmi which basis
-	// of the Class Diagram.
+	// A EGraph points to a Instance Diagram, on which rules will be executed.
 	public EGraph graph;
 
-	// A Interface for interpreter engines. EngineImpl() refers to a default Engine
-	// Implementation.
+	// A interpreter engine.
 	public Engine engine;
 
-	// A module represents a henshin_diagram, which includes a set of Rules.
+	// A module represents a henshin_diagram, which includes a set of rules.
 	public Module module[];
 
 	// A set of rules, which should be injected in the EGraph as noted above.
@@ -104,19 +102,20 @@ public class HenshinGraph {
 		// If this rule has not been injected.
 		if (rules.get(name) == null)
 			doInjectRule(name);
+		
 		// Else run this rule directly.
 		if (rules.get(name).executeRule(paras)) {
 			System.out.println(command + "_" + this.name + "_" + printHead(count++) + ": " + name);
 
-			// Save file
+		// Save file
 			saveFilebyRuleName(name);
 			saveFilebyOverwrite();
 			return true;
+		// Rule has not executed.
 		} else {
-			System.out.println(command + "_" + "Rule has not executed: " + name + " WARNING !!!!!");
+			System.out.println(command + "_" + "Rule has not executed: " + name);
 			return false;
 		}
-
 	}
 
 	public void saveFilebyRuleName(String rulename) {
@@ -131,13 +130,13 @@ public class HenshinGraph {
 		resourceSet.saveEObject(graph.getRoots().get(0), filename);
 	}
 
-	public void simu_SendModel(String modelName) {
+	public void sendSharedPlatoonStructure(String modelName) {
 		saveFilebyFileName(modelName);
 		count++;
 		System.out.println("Context Model: " + modelName + " has sent.");
 	}
 
-	public void simu_GetModel(String modelName) {
+	public void getSharedPlatoonStructure(String modelName) {
 		// Overwrite model
 		if (this.name.equals(TestBench.ROLE_FOLLOWER) || this.name.equals(TestBench.ROLE_JOININGVEHICLE)) {
 			setGraph(modelName);
@@ -155,6 +154,11 @@ public class HenshinGraph {
 			runRule(TestBench.READRULE_JOININGVEHICLEINCOORD, TestBench.READRULE);
 		}
 		saveFilebyOverwrite();
+	}
+
+	public void runRuleAnddoRelection(HenshinGraph leader, String ruleName, Parameter... paras) {
+		this.runRule(ruleName, paras);
+		leader.runRule(ruleName, TestBench.REFLECTION, paras);
 	}
 
 	public void saveFilebyOverwrite() {

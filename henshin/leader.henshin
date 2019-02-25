@@ -242,10 +242,10 @@
       <nodes xmi:id="_l39zERAkEemaxME4ksF8NA" incoming="_HX7moRPyEemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//JoiningPosition"/>
       </nodes>
-      <nodes xmi:id="_xN8z4BAkEemaxME4ksF8NA" incoming="_A5nfYRPyEemf69h7uCbdZw _Eq05kBTWEemgv7xuEKHfSA" outgoing="_941BUBTVEemgv7xuEKHfSA">
+      <nodes xmi:id="_xN8z4BAkEemaxME4ksF8NA" incoming="_Eq05kBTWEemgv7xuEKHfSA" outgoing="_941BUBTVEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//JoiningVehicle"/>
       </nodes>
-      <nodes xmi:id="_7mDUARPxEemf69h7uCbdZw" incoming="_8qS_QRPxEemf69h7uCbdZw _DKYagBTWEemgv7xuEKHfSA" outgoing="_A5nfYRPyEemf69h7uCbdZw _9RtW8BTVEemgv7xuEKHfSA">
+      <nodes xmi:id="_7mDUARPxEemf69h7uCbdZw" incoming="_8qS_QRPxEemf69h7uCbdZw _DKYagBTWEemgv7xuEKHfSA" outgoing="_9RtW8BTVEemgv7xuEKHfSA">
         <type href="../model/platoon.ecore#//PlatoonVehicle"/>
       </nodes>
       <nodes xmi:id="_D8eMYRPyEemf69h7uCbdZw" incoming="_GCD_4RPyEemf69h7uCbdZw _EF_HIBTWEemgv7xuEKHfSA" outgoing="_HX7moRPyEemf69h7uCbdZw _9rzR8BTVEemgv7xuEKHfSA">
@@ -256,9 +256,6 @@
       </nodes>
       <edges xmi:id="_8qS_QRPxEemf69h7uCbdZw" source="_aL50kRAkEemaxME4ksF8NA" target="_7mDUARPxEemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//Platoon/leader"/>
-      </edges>
-      <edges xmi:id="_A5nfYRPyEemf69h7uCbdZw" source="_7mDUARPxEemf69h7uCbdZw" target="_xN8z4BAkEemaxME4ksF8NA">
-        <type href="../model/platoon.ecore#//PlatoonVehicle/joiningRequest"/>
       </edges>
       <edges xmi:id="_GCD_4RPyEemf69h7uCbdZw" source="_aL50kRAkEemaxME4ksF8NA" target="_D8eMYRPyEemf69h7uCbdZw">
         <type href="../model/platoon.ecore#//Platoon/follower"/>
